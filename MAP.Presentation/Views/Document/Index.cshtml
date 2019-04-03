@@ -1,0 +1,91 @@
+﻿@model IEnumerable<MAP.Presentation.Models.DocumentVM>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@using (Html.BeginForm())
+{
+    <table>
+        <tr>
+            <td>
+                <div>
+                    Search by Name: @Html.TextBox("searchString")
+                </div>
+            </td>
+            <td>
+                <input type="submit" value="Search" id="submit" />
+            </td>
+        </tr>
+    </table>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DocumentId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Size)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeVm)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProjectId)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DocumentId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @{
+                string path = "~/Content/Upload/" + @item.ImageUrl;
+            }
+            <img src="@Url.Content(path)" width="50" height="50" />
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeVm)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.DocumentId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId })
+        </td>
+    </tr>
+    }
+
+</table>
