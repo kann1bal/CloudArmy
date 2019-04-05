@@ -19,13 +19,12 @@ namespace MAP.Presentation.Models
     {
 
         public int DocumentId { get; set; }
-        [DataType(DataType.Date)]//affichi calendrier
-
         public DateTime DateDoc { get; set; }
         public string Name { get; set; }
-        public int Size { get; set; }
+        public string Size { get; set; }
         public string ImageUrl { get; set; }
         public TypeVm TypeVm { get; set; }
+        public string ProjectName { get; set; }
         public int? ProjectId { get; set; }
         public IEnumerable<SelectListItem> Projects { get; set; }
 
