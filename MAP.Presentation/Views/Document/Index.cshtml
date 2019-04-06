@@ -4,14 +4,22 @@
     ViewBag.Title = "Index";
 }
 
+
 <h2>Index</h2>
+<div>
+    @Html.ActionLink("ExportePdf", "ExportePdf")
+
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
+
 @using (Html.BeginForm())
 {
+
+
     <table>
         <tr>
             <td>
@@ -20,68 +28,86 @@
                 </div>
             </td>
             <td>
-                <input type="submit" value="Search" id="submit" />
+                <div>
+                </div>
             </td>
+            <td>
+                <input type="submit" value="Search" id="submit" />
+
+            </td>
+            <td></td>
         </tr>
     </table>
 }
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DocumentId)
-        </th>
-       
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
-        <th>
-            Type Document
-        </th>
-        <th>
-            Project Name
-        </th>
-        <th></th>
-    </tr>
+    <table class="table">
+        <tr>
 
-    @foreach (var item in Model)
-    {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DocumentId)
-        </td>
-    
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Size)
-        </td>
-        <td>
-            @{
-                string path = "~/Content/Upload/" + @item.ImageUrl;
-            }
-            <img src="@Url.Content(path)" width="50" height="50" />
-        </td>
+            <th>
+                @Html.DisplayNameFor(model => model.DocumentId)
+            </th>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.TypeVm)
-        </td>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                Description
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImageUrl)
+            </th>
+            <th>
+                Type Document
+            </th>
+            <th>
+                Project Name
+            </th>
+            <th></th>
+        </tr>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.ProjectName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.DocumentId }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId })
-        </td>
-    </tr>
-    }
+        @foreach (var item in Model)
+        {
 
-</table>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DocumentId)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Size)
+                </td>
+                <td>
+                    @if (item.Extension == ".pdf")
+                    {
+                        <img src="~/Content/Upload/pdf.png" width="50" height="50" />
+                    }
+                    else if (item.Extension == ".docx")
+                    {
+                        <img src="~/Content/Upload/docx.png" width="50" height="50" />
+                    }
+                    else
+                    { 
+                    <img src="@Url.Content("~/Content/Upload/" + @item.ImageUrl)" width="50" height="50" />
+                    }
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeVm)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProjectName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.DocumentId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId })
+                    
+                </td>
+            </tr>
+        }
+
+
+    </table>

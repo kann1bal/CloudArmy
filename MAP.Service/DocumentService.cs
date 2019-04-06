@@ -22,16 +22,23 @@ namespace MAP.Service
 
         }
 
+       
         public IEnumerable<Document> SearchDocumentByName(string searchString)
         {
             IEnumerable<Document> DocumentDomain = GetMany();
             if (!String.IsNullOrEmpty(searchString))
             {
-                DocumentDomain = GetMany(x => x.Name.Contains(searchString));
+                DocumentDomain = GetMany(x => x.ProjectId.ToString().Contains(searchString));
             }
 
 
             return DocumentDomain;
+        }
+        public List<Document> getTasksbyIdProject(int ProjectId)
+        {
+            List<Document> ListDocuments = new List<Document>();
+            ListDocuments = GetMany(b => b.ProjectId==ProjectId).ToList();
+            return ListDocuments;
         }
     }
 }
