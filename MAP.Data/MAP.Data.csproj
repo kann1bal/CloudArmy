@@ -116,37 +116,9 @@
     <Compile Include="Infrastructures\IUnitOfWork.cs" />
     <Compile Include="Infrastructures\RepositoryBase.cs" />
     <Compile Include="Infrastructures\UnitOfWork.cs" />
-    <Compile Include="Migrations\201904021754162_aa.cs" />
-    <Compile Include="Migrations\201904021754162_aa.Designer.cs">
-      <DependentUpon>201904021754162_aa.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904042155477_a.cs" />
-    <Compile Include="Migrations\201904042155477_a.Designer.cs">
-      <DependentUpon>201904042155477_a.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904042221038_z.cs" />
-    <Compile Include="Migrations\201904042221038_z.Designer.cs">
-      <DependentUpon>201904042221038_z.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904071218180_moez.cs" />
-    <Compile Include="Migrations\201904071218180_moez.Designer.cs">
-      <DependentUpon>201904071218180_moez.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904071846461_nada.cs" />
-    <Compile Include="Migrations\201904071846461_nada.Designer.cs">
-      <DependentUpon>201904071846461_nada.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904071954022_hana.cs" />
-    <Compile Include="Migrations\201904071954022_hana.Designer.cs">
-      <DependentUpon>201904071954022_hana.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904072039243_azza.cs" />
-    <Compile Include="Migrations\201904072039243_azza.Designer.cs">
-      <DependentUpon>201904072039243_azza.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904080536025_ikram.cs" />
-    <Compile Include="Migrations\201904080536025_ikram.Designer.cs">
-      <DependentUpon>201904080536025_ikram.cs</DependentUpon>
+    <Compile Include="Migrations\201904081732562_azza2.cs" />
+    <Compile Include="Migrations\201904081732562_azza2.Designer.cs">
+      <DependentUpon>201904081732562_azza2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectContext.cs" />
@@ -162,36 +134,14 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904081732562_azza2.resx">
+      <DependentUpon>201904081732562_azza2.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904021754162_aa.resx">
-      <DependentUpon>201904021754162_aa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904042155477_a.resx">
-      <DependentUpon>201904042155477_a.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904042221038_z.resx">
-      <DependentUpon>201904042221038_z.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904071218180_moez.resx">
-      <DependentUpon>201904071218180_moez.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904071846461_nada.resx">
-      <DependentUpon>201904071846461_nada.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904071954022_hana.resx">
-      <DependentUpon>201904071954022_hana.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904072039243_azza.resx">
-      <DependentUpon>201904072039243_azza.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904080536025_ikram.resx">
-      <DependentUpon>201904080536025_ikram.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
