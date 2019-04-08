@@ -15,6 +15,13 @@ namespace MAP.Domain.Entities
     public class User : IdentityUser<int, CustomLogin, CustomUserRole, CustomUserClaim>
     {
         public int status { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public String Logo { get; set; }
+        public virtual ICollection<Meeting> meetings { get; set; }
+        public virtual ICollection<Tasks> tasks { get; set; }
+        public virtual ICollection<Request> requests { get; set; }
+
 
         public User()
         {

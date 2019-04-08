@@ -1,0 +1,71 @@
+﻿@model IEnumerable<MAP.Domain.Entities.Tasks>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AfficherSuggestion</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create task", "Create", new { ProjectId = ViewBag.id })
+    </p>
+    <table class="table">
+        <tr>
+            
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+           
+           
+            <th>
+                @Html.DisplayNameFor(model => model.complexity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.estimation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.startDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.deadline)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @item.Description
+            </td>        
+            <td>
+                @item.complexity
+            </td>
+            <td>
+                @item.estimation
+            </td>
+            <td>
+                @item.startDate.ToString("dd/MM/yyyy")
+            </td>
+            <td>
+                @item.deadline.ToString("dd/MM/yyyy")
+            </td>
+
+            
+            <td>
+                @Html.ActionLink("Edit", "EditSugg", new { id=item.taskId }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.taskId })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

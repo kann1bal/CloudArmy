@@ -45,10 +45,18 @@
         </dt>
 
         <dd>
-            @{
-                string path = "~/Content/Upload/" + Model.ImageUrl;
+            @if (Model.Extension == ".pdf")
+            {
+                <img src="~/Content/Upload/pdf.png" width="50" height="50" />
             }
-            <img src="@Url.Content(path)" width="50" height="50" />
+            else if (Model.Extension == ".docx")
+            {
+                <img src="~/Content/Upload/docx.png" width="50" height="50" />
+            }
+            else
+            {
+                <img src="@Url.Content("~/Content/Upload/" + Model.ImageUrl)" width="50" height="50" />
+            }
         </dd>
 
         <dt>
@@ -64,4 +72,5 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
     @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Download", "Download" )
 </p>

@@ -1,0 +1,163 @@
+﻿@model IEnumerable<MAP.Presentation.Models.RequestVM>
+
+@{
+
+    Layout = "~/Views/Shared/HeadTeamLeader.cshtml";
+}
+    <html>
+
+    <body>
+
+        <div class="span9">
+            <div class="content">
+                <div id="module" class="module" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
+                <script>
+
+                    $(document).ready(function () {
+                        $.getJSON("/TeamLeaderRequest/GetData", function (data) {
+
+
+                            Highcharts.chart('module', {
+                                chart: {
+                                    plotBackgroundColor: null,
+                                    plotBorderWidth: null,
+                                    plotShadow: false,
+                                    type: 'pie'
+                                },
+                                title: {
+                                    text: 'Statistics of Requests Priority'
+                                },
+                                tooltip: {
+                                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                                },
+                                plotOptions: {
+                                    pie: {
+                                        allowPointSelect: true,
+                                        cursor: 'pointer',
+                                        dataLabels: {
+                                            enabled: true,
+                                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                                            style: {
+                                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                                            }
+                                        }
+                                    }
+                                },
+                                series: [{
+                                    name: 'Brands',
+                                    colorByPoint: true,
+                                    data: [{
+                                        name: 'Urgent',
+                                        y: data.Urgent
+
+                                    }, {
+                                        name: 'High',
+                                        y: data.High
+                                    }, {
+                                        name: 'Normal',
+                                        y: data.Normal
+                                    }, {
+                                        name: 'Low',
+                                        y: data.Low
+                                    }]
+                                }]
+                            });
+
+                        });
+                    });
+
+                </script>
+                <br />
+                <br />
+                <center>  <h2>A Statistics of Requests kind and status</h2> </center>
+                <div>
+
+                    <table class="table table-bordered table-condensed table-hover table-striped" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>NotTreatedYet</th>
+                                <th>Open</th>
+                                <th>Closed</th>
+                                <th>Total</th>
+                            </tr>
+                            <tr>
+                                <th>Defect</th>
+                                <th id="p1" Align="center"></th>
+                                <th id="p2" Align="center"></th>
+                                <th id="p3" Align="center"></th>
+                                <th id="p10" Align="center"></th>
+                            </tr>
+                            <tr>
+                                <th>Feature</th>
+                                <th id="p4"></th>
+                                <th id="p5"></th>
+                                <th id="p6"></th>
+                                <th id="p11"></th>
+                            </tr>
+                            <tr>
+                                <th>Patch</th>
+                                <th id="p7"></th>
+                                <th id="p8"></th>
+                                <th id="p9"></th>
+                                <th id="p12"></th>
+                            </tr>
+                            <tr>
+                                <th>Claim</th>
+                                <th id="p13"></th>
+                                <th id="p14"></th>
+                                <th id="p15"></th>
+                                <th id="p16"></th>
+                            </tr>
+                        </thead>
+                        <tbody> </tbody>
+                    </table>
+                    <script>
+
+                        $(document).ready(function () {
+                            $.getJSON("/TeamLeaderRequest/GetNumber", function (data) {
+
+                                document.getElementById("p1").innerHTML = data.data;
+                                document.getElementById("p2").innerHTML = data.data1;
+                                document.getElementById("p3").innerHTML = data.data2;
+                                document.getElementById("p4").innerHTML = data.data0;
+                                document.getElementById("p5").innerHTML = data.data11;
+                                document.getElementById("p6").innerHTML = data.data22;
+                                document.getElementById("p7").innerHTML = data.data00;
+                                document.getElementById("p8").innerHTML = data.data111;
+                                document.getElementById("p9").innerHTML = data.data222;
+                                document.getElementById("p13").innerHTML = data.data3;
+                                document.getElementById("p14").innerHTML = data.data4;
+                                document.getElementById("p15").innerHTML = data.data5;
+                                document.getElementById("p16").innerHTML = data.totalclaim;
+                                document.getElementById("p10").innerHTML = data.totaldef;
+                                document.getElementById("p11").innerHTML = data.totalfea;
+                                document.getElementById("p12").innerHTML = data.totalpatch;
+
+
+                            });
+                        });
+                    </script>
+
+                </div>
+
+            </div><!--/.content-->
+        </div><!--/.span9-->
+        </div>
+        </div><!--/.container-->
+        </div><!--/.wrapper-->
+        <div class="footer">
+            <div class="container">
+
+
+                <b class="copyright">&copy; 2019  - Cloud Army </b> All rights reserved.
+            </div>
+        </div>
+        <script src="~/Assets/Manager/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <script src="~/Assets/Manager/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+        <script src="~/Assets/Manager/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="~/Assets/Manager/scripts/flot/jquery.flot.js" type="text/javascript"></script>
+        <script src="~/Scripts/jquery-3.3.1.min.js" ></script>
+    </body>
+    </html>
+

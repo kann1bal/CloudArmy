@@ -1,0 +1,102 @@
+﻿@model IEnumerable<MAP.Domain.Entities.Tasks>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/HeadMember.cshtml";
+
+}
+
+
+
+
+<div class="span9">
+    <div class="content">
+
+        <div class="module">
+            <div class="module-head">
+                <h3>Tasks List</h3>
+                <p class="align-right"><button class="add-on"></button></p>
+            </div>
+            <div class="module-body">
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Description)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.startDate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.deadline)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.rate)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.complexity)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.progress)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IsDone)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.SpentTime)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Description
+                                </td>
+                                <td>
+                                    @item.startDate
+                                </td>
+                                <td>
+                                    @item.deadline
+                                </td>
+                                <td>
+                                    @item.rate
+                                </td>
+                                <td>
+                                    @item.complexity
+                                </td>
+                                <td>
+                                    @item.progress
+                                </td>
+                                <td>
+                                    @item.IsDone
+                                </td>
+                                <td>
+
+                                    @item.SpentTime.ToString("0") days
+                                </td>
+
+                                <td>
+
+                                    @*@Html.ActionLink("Delete", "Delete", new { id=item.taskId })|*@
+                                    @Html.ActionLink("See More", "Details", new { id = item.taskId })
+                                    @*@Html.ActionLink("Edit", "Edit", new { id = item.taskId })*@
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+
+                <br />
+                <!-- <hr /> -->
+                <br />
+
+
+
+                </body>
+                </html>

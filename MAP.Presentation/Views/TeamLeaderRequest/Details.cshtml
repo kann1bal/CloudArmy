@@ -1,0 +1,116 @@
+﻿@model MAP.Presentation.Models.RequestVM
+
+@{
+
+    Layout = "~/Views/Shared/HeadTeamLeader.cshtml";
+}
+
+<div class="span9">
+    <div class="content">
+        <div class="module">
+
+            <div>
+                <h4>Request Details</h4>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.RequestId)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.RequestId)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Subject)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Subject)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.UpdateDate)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.UpdateDate)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.ProjectId)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.ProjectId)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Id)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Id)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Kind)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Kind)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Status)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Status)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Priority)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Priority)
+                    </dd>
+
+
+                </dl>
+            </div>
+            <p>
+                @Html.ActionLink("Edit", "Edit", new { Id = Model.RequestId }) |
+                <input type="submit" value="Back to List" class="btn btn-default" href="@Url.Action("Table", "TeamLeaderRequest")" />
+            </p>
+
+
+        </div>
+
+
+
+    </div>
+</div><!--/.content-->
+        </div>
+        </div><!--/.container-->
+    </div><!--/.wrapper-->
+<div class="footer">
+    <div class="container">
+
+
+        <b class="copyright">&copy; 2019  - Cloud Army </b> All rights reserved.
+    </div>
+</div>
+
+<script src="~/Assets/Manager/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="~/Assets/Manager/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="~/Assets/Manager/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/Assets/Manager/scripts/flot/jquery.flot.js" type="text/javascript"></script>
+</body>
+</html>
+
+

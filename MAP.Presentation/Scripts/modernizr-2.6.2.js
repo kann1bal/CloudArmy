@@ -1083,7 +1083,7 @@ window.Modernizr = (function( window, document, undefined ) {
       /**
        * Creates a style sheet with the given CSS text and adds it to the document.
        * @private
-       * @param {Document} ownerDocument The document.
+       * @param {Documentt} ownerDocument The document.
        * @param {String} cssText The CSS text.
        * @returns {StyleSheet} The style element.
        */
@@ -1108,7 +1108,7 @@ window.Modernizr = (function( window, document, undefined ) {
         /**
        * Returns the data associated to the given document
        * @private
-       * @param {Document} ownerDocument The document.
+       * @param {Documentt} ownerDocument The document.
        * @returns {Object} An object of data.
        */
       function getExpandoData(ownerDocument) {
@@ -1126,7 +1126,7 @@ window.Modernizr = (function( window, document, undefined ) {
        * returns a shived element for the given nodeName and document
        * @memberOf html5
        * @param {String} nodeName name of the element
-       * @param {Document} ownerDocument The context document.
+       * @param {Documentt} ownerDocument The context document.
        * @returns {Object} The shived element.
        */
       function createElement(nodeName, ownerDocument, data){
@@ -1162,7 +1162,7 @@ window.Modernizr = (function( window, document, undefined ) {
       /**
        * returns a shived DocumentFragment for the given document
        * @memberOf html5
-       * @param {Document} ownerDocument The context document.
+       * @param {Documentt} ownerDocument The context document.
        * @returns {Object} The shived DocumentFragment.
        */
       function createDocumentFragment(ownerDocument, data){
@@ -1186,7 +1186,7 @@ window.Modernizr = (function( window, document, undefined ) {
       /**
        * Shivs the `createElement` and `createDocumentFragment` methods of the document.
        * @private
-       * @param {Document|DocumentFragment} ownerDocument The document.
+       * @param {Documentt|DocumentFragment} ownerDocument The document.
        * @param {Object} data of the document.
        */
       function shivMethods(ownerDocument, data) {
@@ -1224,8 +1224,8 @@ window.Modernizr = (function( window, document, undefined ) {
       /**
        * Shivs the given document.
        * @memberOf html5
-       * @param {Document} ownerDocument The document to shiv.
-       * @returns {Document} The shived document.
+       * @param {Documentt} ownerDocument The document to shiv.
+       * @returns {Documentt} The shived document.
        */
       function shivDocument(ownerDocument) {
         if (!ownerDocument) {

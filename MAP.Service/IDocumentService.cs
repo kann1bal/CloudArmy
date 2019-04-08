@@ -8,9 +8,8 @@ using System.Threading.Tasks;
 
 namespace MAP.Service
 {
-  public  interface IDocumentService: IService<Document>
+  public  interface IDocumentService: IService<Documentt>
     {
-        IEnumerable<Document> SearchDocumentByName(string searchString);
-
+        IEnumerable<Documentt> SearchDocumentByName(string searchString);
     }
 }
