@@ -8,138 +8,152 @@
 }
 
 
-<h2>Index</h2>
-<div>
-    @Html.ActionLink("ExportePdf", "ExportePdf")
-
-</div>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 
 
-@using (Html.BeginForm())
-{
 
 
-    <table>
-        <tr>
-            <td>
-                <div>
-                    Search by Name: @Html.TextBox("searchString")
+<div class="span9">
+    <div class="content">
+
+        <div class="module">
+            <div class="module-head">
+                <h2 class="align-center">Document List</h2>
+                <div class="align-right">
+                    @Html.ActionLink("ExportePdf", "ExportePdf")
+
                 </div>
-            </td>
-            <td>
-                <div>
-                </div>
-            </td>
-            <td>
-                <input type="submit" value="Search" id="submit" />
 
-            </td>
-            <td></td>
-        </tr>
-    </table>
-}
-<table class="table">
-    <tr>
+                <p class="align-right">
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+               
+            </div>
+            <div class="module-body">
 
-        <th>
-            @Html.DisplayNameFor(model => model.DocumentId)
-        </th>
 
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            Description
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageUrl)
-        </th>
-        <th>
-            Type Documentt
-        </th>
-        <th>
-            Project Name
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DocumentId)
-            </td>
-
-            <td>
-                <a href="#" data-toggle="popover" data-trigger="hover" id="@item.DocumentId">@item.Name</a>
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
-            </td>
-            <td>
-                @if (item.Extension == ".pdf")
+                @using (Html.BeginForm())
                 {
-                    <img src="~/Content/Upload/pdf.png" width="50" height="50" />
+
+
+                    <table>
+                        <tr>
+                            <td>
+                                <div>
+                                    Search by Name: @Html.TextBox("searchString")
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                </div>
+                            </td>
+                            <td>
+                                <input type="submit" value="Search" id="submit" />
+
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
                 }
-                else if (item.Extension == ".docx")
-                {
-                    <img src="~/Content/Upload/docx.png" width="50" height="50" />
-                }
-                else
-                {
-                    <img src="@Url.Content("~/Content/Upload/" + @item.ImageUrl)" width="50" height="50" />
-                }
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeVm)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.ProjectNames)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.DocumentId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId })
-
-            </td>
-        </tr>
-    }
+                <table class="table">
+                    <thead>
+                        <tr>
 
 
-</table>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                Description
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ImageUrl)
+                            </th>
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $('[data-toggle="popover"]').popover({
-            title: setData,
-            html: true,
-            placement: 'right'
 
-        });
-        function setData(id) {
-            var set_data = '';
-            var element = $(this);
-            var id = element.attr("id");
-            $.ajax({
-                url: "/Documentt/DetailsAjax?id" + id,
-                method: "Get",
-                async: false,
-                data: { id: id },
-                success: function (data) {
-                    set_data = data;
-                }
+                            <th>
+                                Type Document
+                            </th>
+                            <th>
+                                Project Name
+                            </th>
 
-            });
-            return set_data;
-        }
-    });
-</script>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                
+
+                                <td>
+                                    <a href="#" data-toggle="popover" data-trigger="hover" id="@item.DocumentId">@item.Name</a>
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Size)
+                                </td>
+                                <td>
+                                    @if (item.Extension == ".pdf")
+                                    {
+                                        <img src="~/Content/Upload/pdf.png" width="50" height="50" />
+                                    }
+                                    else if (item.Extension == ".docx")
+                                    {
+                                        <img src="~/Content/Upload/docx.png" width="50" height="50" />
+                                    }
+                                    else
+                                    {
+                                        <img src="@Url.Content("~/Content/Upload/" + @item.ImageUrl)" width="50" height="50" />
+                                    }
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TypeVm)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ProjectNames)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.DocumentId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId })
+
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+                <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $('[data-toggle="popover"]').popover({
+                            title: setData,
+                            html: true,
+                            placement: 'right'
+
+                        });
+                        function setData(id) {
+                            var set_data = '';
+                            var element = $(this);
+                            var id = element.attr("id");
+                            $.ajax({
+                                url: "/Documentt/DetailsAjax?id" + id,
+                                method: "Get",
+                                async: false,
+                                data: { id: id },
+                                success: function (data) {
+                                    set_data = data;
+                                }
+
+                            });
+                            return set_data;
+                        }
+                    });
+                </script>
+
+                <br />
+                <!-- <hr /> -->
+                <br />

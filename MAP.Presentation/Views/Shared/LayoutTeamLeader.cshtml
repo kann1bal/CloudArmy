@@ -27,12 +27,7 @@
                         <li><a href="#"><i class="icon-eye-open"></i></a></li>
                         <li><a href="#"><i class="icon-bar-chart"></i></a></li>
                     </ul>
-                    <form class="navbar-search pull-left input-append" action="#">
-                        <input type="text" class="span3">
-                        <button class="btn" type="button">
-                            <i class="icon-search"></i>
-                        </button>
-                    </form>
+                   
                     <ul class="nav pull-right">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -76,91 +71,69 @@
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled">
                             <li class="active">
-                                <a href="@Url.Action("dashboard", "TeamLeader")">
-                                    <i class="menu-icon icon-dashboard"></i>Dashboard
+                                <a href="@Url.Action("Index", "TeamLeader")">
+                                    <i class="menu-icon icon-dashboard"></i>Home
                                 </a>
                             </li>
-
+                        </ul>
+                       
+                        <ul class="widget widget-menu unstyled">
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePage4">
+                                    <i class="menu-icon icon-book">
+                                    </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                    </i>Projects
+                                </a>
+                                <ul id="togglePage4" class="collapse unstyled">
+                                    <li><a href="@Url.Action("Index", "Projectt")"><i class="menu-icon icon-paste"></i>View Projects</a></li>
+                                    <li><a href="@Url.Action("Create", "Projectt")"><i class="menu-icon icon-table"></i>Add Project </a></li>
+                                </ul>
+                            </li>
                             <li>
                                 <a class="collapsed" data-toggle="collapse" href="#togglePages">
-                                    <i class="menu-icon icon-paste">
+                                    <i class="menu-icon icon-paste"></">
                                     </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
                                     </i>Documents
-                                </a>
+                                </a>    
                                 <ul id="togglePages" class="collapse unstyled">
-                                    <li><a href="@Url.Action("Create", "Documentt")"><i class="icon-inbox"></i>Create  </a></li>
-                                    <li><a href="@Url.Action("Index", "Documentt")"><i class="icon-inbox"></i>List </a></li>
-
+                                    <li><a href="@Url.Action("Index", "Document")"><i class="menu-icon icon-paste"></i>View Documents</a></li>
+                                    <li><a href="@Url.Action("Create", "Document")"><i class="menu-icon icon-table"></i>Add Document </a></li>
                                 </ul>
                             </li>
 
                             <li>
-                                <a href="message.html">
-                                    <i class="menu-icon icon-inbox"></i>Inbox <b class="label green pull-right">
-                                        11
-                                    </b>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="@Url.Action("Task", "TeamLeader")">
-                                    <i class="menu-icon icon-tasks"></i>Tasks <b class="label orange pull-right">
-                                        19
-                                    </b>
-                                </a>
-                            </li>
-                        </ul>
-                        <!--/.widget-nav-->
-                        <ul class="widget widget-menu unstyled">
-                            <li><a href="ui-button-icon.html"><i class="menu-icon icon-bold"></i> Buttons </a></li>
-                            <li><a href="ui-typography.html"><i class="menu-icon icon-book"></i>Typography </a></li>
-                            <li><a href="@Url.Action("form", "TeamLeader")"><i class="menu-icon icon-paste"></i>Forms </a></li>
-                            <li><a href="@Url.Action("Table", "TeamLeader")"><i class="menu-icon icon-table"></i>Tables </a></li>
-                            <li><a href="charts.html"><i class="menu-icon icon-bar-chart"></i>Charts </a></li>
-                        </ul>
-                        <!--/.widget-nav-->
-                        <ul class="widget widget-menu unstyled">
-                            <li>
-                                <a class="collapsed" data-toggle="collapse" href="#togglePages">
-                                    <i class="menu-icon icon-cog">
+                                <a class="collapsed" data-toggle="collapse" href="#togglePage1">
+                                    <i class="menu-icon icon-bullhorn">
                                     </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
-                                    </i>More Pages
+                                    </i>Requests
                                 </a>
-                                <ul id="togglePages" class="collapse unstyled">
-                                    <li><a href="other-login.html"><i class="icon-inbox"></i>Login </a></li>
-                                    <li><a href="other-user-profile.html"><i class="icon-inbox"></i>Profile </a></li>
-                                    <li><a href="other-user-listing.html"><i class="icon-inbox"></i>All Users </a></li>
+                                <ul id="togglePage1" class="collapse unstyled">
+                                    <li><a href="@Url.Action("Create", "TeamLeaderRequest")"><i class="menu-icon icon-paste"></i>Create A Request</a></li>
+                                    <li><a href="@Url.Action("Table", "TeamLeaderRequest")"><i class="menu-icon icon-table"></i>View Requests </a></li>
+                                    <li><a href="@Url.Action("Chart", "TeamLeaderRequest")"><i class="menu-icon icon-bar-chart"></i>Requests Charts </a></li>
                                 </ul>
                             </li>
-                            <li>@Html.Partial("_LoginPartial") </li>
-
-                        </ul>
+                            
+                            <li>
+                                <a class="collapsed" data-toggle="collapse" href="#togglePage2">
+                                    <i class="menu-icon icon-table">
+                                    </i><i class="icon-chevron-down pull-right"></i><i class="icon-chevron-up pull-right">
+                                    </i>Meetings
+                                </a>
+                                <ul id="togglePage2" class="collapse unstyled">
+                                    <li><a href="@Url.Action("Index", "Meeting")"><i class="menu-icon icon-paste"></i>View Meetings</a></li>
+                                    <li><a href="@Url.Action("Create", "Meeting")"><i class="menu-icon icon-table"></i>Add Meeting </a></li>
+                                </ul>
+                            </li>
+                        </ul>   
+                        
+                        
                     </div>
                     <!--/.sidebar-->
                 </div>
                 <!--/.span3-->
                 <div class="span9">
-
-                    <!---- <div class="btn-controls">
-         <div class="btn-box-row row-fluid">
-             <a href="#" class="btn-box big span4">
-                 <i class=" icon-random"></i><b>65%</b>
-                 <p class="text-muted">
-                     Growth
-                 </p>
-             </a><a href="#" class="btn-box big span4">
-                 <i class="icon-user"></i><b>15</b>
-                 <p class="text-muted">
-                     New Users
-                 </p>
-             </a><a href="#" class="btn-box big span4">
-                 <i class="icon-money"></i><b>15,152</b>
-                 <p class="text-muted">
-                     Profit
-                 </p>
-             </a>
-         </div>
-
-     </div>-->      <div>
+     
                     <div class="content">
                         
                            
@@ -172,26 +145,7 @@
                     </div>
                     <!--/#btn-controls-->
                     <!--/.module-->
-                    <div class="module hide">
-                        <div class="module-head">
-                            <h3>
-                                Adjust Budget Range
-                            </h3>
-                        </div>
-                        <div class="module-body">
-                            <div class="form-inline clearfix">
-                                <a href="#" class="btn pull-right">Update</a>
-                                <label for="amount">
-                                    Price range:
-                                </label>
-                                &nbsp;
-                                <input type="text" id="amount" class="input-" />
-                            </div>
-                            <hr />
-                            <div class="slider-range">
-                            </div>
-                        </div>
-                    </div>
+                    
 
                     <!--/.module-->
                 </div>
@@ -206,7 +160,7 @@
 
     <div class="footer">
         <div class="container">
-            <b class="copyright">&copy; 2019 Cloud Army- EGrappler.com </b>All rights reserved.
+            <b class="copyright">&copy; 2019 Cloud Army  </b>All rights reserved.
         </div>
     </div>
     <script src="~/Assets/Manager/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>

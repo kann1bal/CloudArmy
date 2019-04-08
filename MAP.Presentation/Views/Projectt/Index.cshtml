@@ -1,9 +1,7 @@
 ﻿@model IEnumerable<MAP.Presentation.Models.ProjectVM>
-
 @{
-    Layout = "~/Views/Shared/Head.cshtml";
+    Layout = "~/Views/Shared/LayoutTeamLeader.cshtml";
 }
-
 <!DOCTYPE html>
 
 <html>
@@ -21,7 +19,7 @@
 
             <div class="module">
                 <div class="module-head">
-                    <h3>Meetings List</h3>
+                    <h3>Projects List</h3>
                     <p class="align-right"><button class="add-on"></button></p>
                 </div>
                 <div class="module-body">
@@ -44,11 +42,11 @@
                                 </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.ImageUrl)
-                                </th> 
+                                </th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.Id)
                                 </th>
-                                
+
 
                             </tr>
                         </thead>
@@ -73,11 +71,11 @@
                             }
                         </tbody>
                     </table>
-
-                    <br />
-                    <!-- <hr /> -->
-                    <br />
-
+                </div>
+               </div>
+            </div>
+        </div>
+    
 
 
 </body>
