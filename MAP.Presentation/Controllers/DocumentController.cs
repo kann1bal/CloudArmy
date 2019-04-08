@@ -125,7 +125,7 @@ namespace MAP.Presentation.Controllers
 
             var MyProjects = MyProjectService.GetMany();
 
-            ViewBag.ListProjects = new SelectList(MyProjects, "ProjectId", "Name");
+            ViewBag.ListProjects = new SelectList(MyProjects, "ProjectId", "Title");
             //viewbag :variable pour tronsporter les données du controller lil vue 
             return View();
         }
@@ -176,7 +176,7 @@ namespace MAP.Presentation.Controllers
 
 
 
-            ViewBag.ListProjectsedit = new SelectList(MyProjectsedit, "ProjectId", "Name");
+            ViewBag.ListProjectsedit = new SelectList(MyProjectsedit, "ProjectId", "Title");
             //viewbag :variable pour tronsporter les données du controller lil vue 
 
             var p = MyDocService.GetById(id);

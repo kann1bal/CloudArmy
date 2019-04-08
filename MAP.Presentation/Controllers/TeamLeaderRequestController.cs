@@ -127,12 +127,38 @@ namespace MAP.Presentation.Controllers
         }
 
         // GET: TeamLeader/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            Request R = MyRequestService.GetRequestById(id);
+            RequestVM RVM = new RequestVM();
+
+            //if (p == null)
+            // {
+            //return HttpNotFound();
+            //   return View();
+            //  }
+
+
+            // RVM.Name = R.Name;
+            // RVM.Kind = (KindVM)R.Kind;
+            // RVM.Priority = (PriorityVM)R.Priority;  
+             RVM.Status = (StatusVM)R.Status;
+            // RVM.Category = (CategoryVM)R.Category;
+            //    RVM.UpdateDate = R.UpdateDate;
+            //  RVM.Subject = R.Subject;
+            // RVM.Author = R.Author;
+            // RVM.ProjectCId = R.ProjectCId;
+            // RVM.UserIId = R.UserIId;
+
+
+
+
+            return View(RVM);
         }
 
-        // POST: TeamLeader/Edit/5
+        
+       // TeamLeader/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async System.Threading.Tasks.Task<ActionResult> Edit(int id, Request RVM)
@@ -148,7 +174,7 @@ namespace MAP.Presentation.Controllers
                 // R.Priority = RVM.Priority;
                 //  R.Category = RVM.Category;
                 R.Status = RVM.Status;
-                R.UpdatedBy = User.Identity.Name;
+                //R.UpdatedBy = User.Identity.Name;
                 //  R.UpdateDate = RVM.UpdateDate;
                 //  R.Subject = RVM.Subject;
                 // R.Author = RVM.Author;

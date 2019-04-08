@@ -28,7 +28,7 @@ namespace MAP.Service
             IEnumerable<Documentt> DocumentDomain = GetMany();
             if (!String.IsNullOrEmpty(searchString))
             {
-                DocumentDomain = GetMany(x => x.ProjectId.ToString().Contains(searchString));
+                DocumentDomain = GetMany(x => x.Name.ToString().Contains(searchString));
             }
 
 
