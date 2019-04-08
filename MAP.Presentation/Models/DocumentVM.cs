@@ -24,12 +24,12 @@ namespace MAP.Presentation.Models
         public DateTime DateDoc { get; set; }
         public string Name { get; set; }
         public string Size { get; set; }
-        [Display "Description"]
+    
         public string ImageUrl { get; set; }
         public TypeVm TypeVm { get; set; }
         public string Extension { get; set; }
 
-        public string ProjectName { get; set; }
+        public string ProjectNames { get; set; }
        
         public int? ProjectId { get; set; }
         public IEnumerable<SelectListItem> Projects { get; set; }

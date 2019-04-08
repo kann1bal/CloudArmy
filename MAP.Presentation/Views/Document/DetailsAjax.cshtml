@@ -1,0 +1,28 @@
+﻿@model IEnumerable<MAP.Presentation.Models.DocumentVM>
+
+@{
+    ViewBag.Title = "DetailsAjax";
+}
+<h2>DetailsAjax</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="container">
+    <h4 style=" text-align:center;border-bottom:1px solid #808080">EmployeeInfo</h4>
+    @foreach (var item in Model)
+    {
+    <p>
+        <label>Name : </label> @Html.DisplayFor(modelItem => item.Name)
+    </p>
+    <p>
+        <label>Email : </label>@Html.DisplayFor(modelItem => item.Size)
+    </p>
+    <p>
+        <label>Phone : </label> @Html.DisplayFor(modelItem => item.Name)
+    </p>
+    <p>
+        <label>Experience : </label> @Html.DisplayFor(modelItem => item.Size)
+    </p>
+        }
+</div>

@@ -30,14 +30,14 @@ namespace MAP.Presentation.Controllers
 
             MyProjectService = new ProjectService();
         }
-        // GET: Document
+        // GET: Documentt
         public ActionResult Index(string searchString)
         {
 
             var documents = new List<DocumentVM>();
 
 
-            foreach (Document f in MyDocService.SearchDocumentByName(searchString))
+            foreach (Documentt f in MyDocService.SearchDocumentByName(searchString))
             {
 
                 documents.Add(new DocumentVM()
@@ -49,7 +49,7 @@ namespace MAP.Presentation.Controllers
                     TypeVm = (TypeVm)f.FileType,
                     ImageUrl = f.ImageUrl,
                     ProjectId = f.ProjectId,
-                    ProjectName = MyProjectService.GetById((int)f.ProjectId).Name,
+                    ProjectNames = MyProjectService.GetById((int)f.ProjectId).Title,
                     Extension = Path.GetExtension(f.ImageUrl)
             });
               
@@ -60,7 +60,37 @@ namespace MAP.Presentation.Controllers
             return View(documents);
         }
 
-        // GET: Document/Details/5
+        /// index vue partielle 
+        public ActionResult Indexpartielle(string searchString)
+        {
+
+            var documents = new List<DocumentVM>();
+
+
+            foreach (Documentt f in MyDocService.SearchDocumentByName(searchString))
+            {
+
+                documents.Add(new DocumentVM()
+                {
+                    DocumentId = f.DocumentId,
+                    DateDoc = f.DateDoc,
+                    Name = f.Name,
+                    Size = f.Size,
+                    TypeVm = (TypeVm)f.FileType,
+                    ImageUrl = f.ImageUrl,
+                    ProjectId = f.ProjectId,
+                    ProjectNames = MyProjectService.GetById((int)f.ProjectId).Title,
+                    Extension = Path.GetExtension(f.ImageUrl)
+                });
+
+
+
+            }
+
+            return View(documents);
+        }
+
+        // GET: Documentt/Details/5
         public ActionResult Details(int id)
         {
             var p = MyDocService.GetById(id);
@@ -74,7 +104,7 @@ namespace MAP.Presentation.Controllers
             Docvm.TypeVm = (TypeVm)p.FileType;
             //Docvm.P = MyProjectService.GetById(p.ProjectId).Name;
             Docvm.ProjectId = p.ProjectId;
-            Docvm.ProjectName = MyProjectService.GetById((int)p.ProjectId).Name;
+            Docvm.ProjectNames = MyProjectService.GetById((int)p.ProjectId).Title;
             Docvm.Extension = Path.GetExtension(p.ImageUrl);
             Id4Dowload = p.DocumentId;
             System.Diagnostics.Debug.WriteLine("////** this is me  " + Id4Dowload);
@@ -89,7 +119,7 @@ namespace MAP.Presentation.Controllers
         }
 
 
-        // GET: Document/Create
+        // GET: Documentt/Create
         public ActionResult Create()
         {
 
@@ -100,12 +130,12 @@ namespace MAP.Presentation.Controllers
             return View();
         }
 
-        // POST: Document/Create
+        // POST: Documentt/Create
         [HttpPost]
         public ActionResult Create(DocumentVM DocVM, HttpPostedFileBase Image)
         {
 
-            Document t1 = new Document();
+            Documentt t1 = new Documentt();
 
             t1.Name = DocVM.Name + "  " + DateTime.Now.ToString();
             t1.DateDoc = DateTime.Now;
@@ -134,7 +164,7 @@ namespace MAP.Presentation.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: Document/Edit/5
+        // GET: Documentt/Edit/5
         public ActionResult Edit(int id)
         {
             System.Diagnostics.Debug.WriteLine("********* this is mee ");
@@ -161,7 +191,7 @@ namespace MAP.Presentation.Controllers
         }
 
 
-        // POST: Document/Edit/5
+        // POST: Documentt/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, DocumentVM DocVm, HttpPostedFileBase Image)
         {
@@ -179,7 +209,7 @@ namespace MAP.Presentation.Controllers
         }
 
 
-        // GET: Document/Delete/5
+        // GET: Documentt/Delete/5
         public ActionResult Delete(int id)
         {
             var p = MyDocService.GetById(id);
@@ -196,7 +226,7 @@ namespace MAP.Presentation.Controllers
             return View(Docvm);
         }
 
-        // POST: Document/Delete/5
+        // POST: Documentt/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, DocumentVM DocVm)
         {
@@ -246,6 +276,21 @@ namespace MAP.Presentation.Controllers
                 return File(fullpath, "file/Docx", p.ImageUrl);
 
         }
+        public ActionResult DetailsAjax(int id)
+        {
+            List<DocumentVM> lists = new List<DocumentVM>();
+            var p = MyDocService.GetById(id);
+            DocumentVM Docvm = new DocumentVM();
+
+                
+                Docvm.Name = p.Name;
+                Docvm.Size = p.Size;
+                lists.Add(Docvm);
+                
+            
+            return View(lists);
+        }
+
 
 
     }

@@ -14,6 +14,10 @@ namespace MAP.Presentation.Models
 {
     public class UserModel : IdentityUser<int, CustomLogin, CustomUserRole, CustomUserClaim>
     {
+        public int status { get; set; }
+        public String FirstName { get; set; }
+        public String LastName { get; set; }
+        public String Logo { get; set; }
 
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<UserModel, int> manager)

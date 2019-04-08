@@ -1,8 +1,6 @@
 ﻿@model MAP.Presentation.Models.DocumentVM
 
-@{
-    Layout = "~/Views/Shared/LayoutTeamLeader.cshtml";
-}
+
 
 
 
@@ -15,7 +13,7 @@
 </head>
 <body>
 
-    @using (Html.BeginForm("Create", "Document", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    @using (Html.BeginForm("Create", "Documentt", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 

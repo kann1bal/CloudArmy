@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MAP.Presentation.Models.DocumentVM>
+
+@{
+    Layout = "~/Views/Shared/LayoutTeamLeader.cshtml";
+}
+
+
+@{
+    ViewBag.Title = "Indexpartielle";
+}
+
+
+<h2>Indexpartielle</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+
+@if (Model != null)
+{
+    foreach (var item in Model)
+    {
+        <div class="content">
+            <div class="btn-controls">
+                <div class="btn-box-row row-fluid">
+                    @Html.Partial("One", item);
+                </div>
+            </div>
+        </div>
+
+
+
+    }
+}

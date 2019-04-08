@@ -25,12 +25,12 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
-         
-      
- <li>
+
+
+            <li>
                 <a href=@Url.Action("Client","Back")>
-                    <i class="fa fa-users" ></i><span> Clients</span>
-                    
+                    <i class="fa fa-users"></i><span> Clients</span>
+
                 </a>
             </li>
             <li class="treeview">
@@ -38,86 +38,43 @@
                     <i class="fa fa-briefcase"></i>
                     <span>Projects</span>
                     <span class="pull-right-container">
-                    
+
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                 <li><a href="@Url.Action("Projet","Back")"><span>ALL Projects</span></a></li>
-                   
-                </ul>
-            </li>      
+                    <li><a href="@Url.Action("Projet","Back")"><span>ALL Projects</span></a></li>
 
-  <li class="treeview">
-                
-		<a href="#">
+                </ul>
+            </li>
+
+            <li class="treeview">
+
+                <a href="#">
                     <i class="fa fa-edit"></i> <span>Resources Management</span>
                     <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href=@Url.Action("Index","Resource")>
-                        <i class="fa fa-circle-o">
-                        </i> Resources
-                        </a></li>
+                    <li>
+                        <a href=@Url.Action("Index","Resource")>
+                            <i class="fa fa-circle-o">
+                            </i> Resources
+                        </a>
+                    </li>
                     <li><a href="@Url.Action("ProjectAffectation","Resource")"><i class="fa fa-circle-o"></i> Assignations Projects</a></li>
-                    
-                </ul>
-            </li>
-	                <li><a href=@Url.Action("Index","Skills")><i class="fa fa-book"></i> <span>Skills Management</span></a></li>
-
-       
-       
-
-            <li class="active treeview menu-open">
-                <a href="#">
-                    <i class="fa fa-users"></i> <span>Management Resources</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-                <ul class="treeview-menu" style="">
-                    <li><a href="@Url.Action("Index","Tests")"><i class="fa fa-indent"></i>Reclamation</a></li>
-                    <li class="active"><a href="@Url.Action("Index","Request")"><i class="fa fa-tasks"></i>Messagerie</a></li>
-                    <li class="active"><a href="@Url.Action("Index","Parrain")"><i class="fa fa-user-plus"></i>Email</a></li>
-                    <li class="active"><a href="@Url.Action("Index","Postes")"><i class="fa fa-map-signs"></i>Chat</a></li>
-                    <li class="active"><a href="@Url.Action("Index","Postes")"><i class="fa  fa-pie-chart"></i>Statistiques</a></li>
 
                 </ul>
             </li>
+            <li><a href=@Url.Action("Index","Skills")><i class="fa fa-book"></i> <span>Skills Management</span></a></li>
 
-            -->
-            <li class="active treeview menu-open">
-                <a href="#">
-                    <i class="fa fa-users"></i> <span>Management Client/Project</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                </a>
-            <li>
-                <a href="@Url.Action("MailBox","Back")">
-                    <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                    <span class="pull-right-container">
-                        <small class="label pull-right bg-yellow">12</small>
-                        <small class="label pull-right bg-green">16</small>
-                        <small class="label pull-right bg-red">5</small>
-                    </span>
-                </a>
-            </li>
-                <ul class="treeview-menu" style="">
-                    <li><a href="@Url.Action("Index","Tests")"><i class="fa fa-indent"></i>Reclamation</a></li>
-                    <li class="active"><a href="@Url.Action("Index","Request")"><i class="fa fa-tasks"></i>Messagerie</a></li>
-                    <li class="active"><a href="@Url.Action("Index","Parrain")"><i class="fa fa-user-plus"></i>Email</a></li>
-                    <li class="active"><a href="@Url.Action("Index","Postes")"><i class="fa fa-map-signs"></i>Chat</a></li>
-                    <li class="active"><a href="@Url.Action("Index","Postes")"><i class="fa  fa-pie-chart"></i>Statistiques</a></li>
 
-                </ul>
-            </li>
 
-           
-        
 
-            </ul>
+
+
+
+        </ul>
     </section>
     <!-- /.sidebar -->
 </aside>

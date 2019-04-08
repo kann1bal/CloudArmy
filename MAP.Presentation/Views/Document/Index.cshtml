@@ -1,6 +1,9 @@
 ﻿@model IEnumerable<MAP.Presentation.Models.DocumentVM>
 
 @{
+    Layout = "~/Views/Shared/LayoutTeamLeader.cshtml";
+}
+@{
     ViewBag.Title = "Index";
 }
 
@@ -39,75 +42,104 @@
         </tr>
     </table>
 }
-    <table class="table">
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.DocumentId)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Description
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageUrl)
+        </th>
+        <th>
+            Type Documentt
+        </th>
+        <th>
+            Project Name
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DocumentId)
+            </td>
 
-            <th>
-                @Html.DisplayNameFor(model => model.DocumentId)
-            </th>
+            <td>
+                <a href="#" data-toggle="popover" data-trigger="hover" id="@item.DocumentId">@item.Name</a>
+            </td>
 
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                Description
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            <th>
-                Type Document
-            </th>
-            <th>
-                Project Name
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DocumentId)
-                </td>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Size)
-                </td>
-                <td>
-                    @if (item.Extension == ".pdf")
-                    {
-                        <img src="~/Content/Upload/pdf.png" width="50" height="50" />
-                    }
-                    else if (item.Extension == ".docx")
-                    {
-                        <img src="~/Content/Upload/docx.png" width="50" height="50" />
-                    }
-                    else
-                    { 
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @if (item.Extension == ".pdf")
+                {
+                    <img src="~/Content/Upload/pdf.png" width="50" height="50" />
+                }
+                else if (item.Extension == ".docx")
+                {
+                    <img src="~/Content/Upload/docx.png" width="50" height="50" />
+                }
+                else
+                {
                     <img src="@Url.Content("~/Content/Upload/" + @item.ImageUrl)" width="50" height="50" />
-                    }
-                </td>
+                }
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.TypeVm)
-                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeVm)
+            </td>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.ProjectName)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.DocumentId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId })
-                    
-                </td>
-            </tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProjectNames)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.DocumentId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.DocumentId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.DocumentId })
+
+            </td>
+        </tr>
+    }
+
+
+</table>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover({
+            title: setData,
+            html: true,
+            placement: 'right'
+
+        });
+        function setData(id) {
+            var set_data = '';
+            var element = $(this);
+            var id = element.attr("id");
+            $.ajax({
+                url: "/Documentt/DetailsAjax?id" + id,
+                method: "Get",
+                async: false,
+                data: { id: id },
+                success: function (data) {
+                    set_data = data;
+                }
+
+            });
+            return set_data;
         }
-
-
-    </table>
+    });
+</script>

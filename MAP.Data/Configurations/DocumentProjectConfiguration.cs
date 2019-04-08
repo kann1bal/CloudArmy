@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MAP.Data.Configurations
 {
-    class DocumentProjectConfiguration : EntityTypeConfiguration<Document>
+    class DocumentProjectConfiguration : EntityTypeConfiguration<Documentt>
     {
         public DocumentProjectConfiguration()
         {

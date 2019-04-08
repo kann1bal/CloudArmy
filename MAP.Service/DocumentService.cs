@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MAP.Service
 {
-   public class DocumentService:Service<Document>,IDocumentService
+   public class DocumentService:Service<Documentt>,IDocumentService
     {
 
 
@@ -23,9 +23,9 @@ namespace MAP.Service
         }
 
        
-        public IEnumerable<Document> SearchDocumentByName(string searchString)
+        public IEnumerable<Documentt> SearchDocumentByName(string searchString)
         {
-            IEnumerable<Document> DocumentDomain = GetMany();
+            IEnumerable<Documentt> DocumentDomain = GetMany();
             if (!String.IsNullOrEmpty(searchString))
             {
                 DocumentDomain = GetMany(x => x.ProjectId.ToString().Contains(searchString));
@@ -34,11 +34,13 @@ namespace MAP.Service
 
             return DocumentDomain;
         }
-        public List<Document> getTasksbyIdProject(int ProjectId)
+        public List<Documentt> getTasksbyIdProject(int ProjectId)
         {
-            List<Document> ListDocuments = new List<Document>();
+            List<Documentt> ListDocuments = new List<Documentt>();
             ListDocuments = GetMany(b => b.ProjectId==ProjectId).ToList();
             return ListDocuments;
         }
+
+
     }
 }
