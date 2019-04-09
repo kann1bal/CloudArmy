@@ -39,16 +39,32 @@ namespace MAP.Presentation.Controllers
                 Requests.Add(new RequestVM()
                 {
                     RequestId = f.RequestId,
+
+
                     Name = f.Name,
+
                     Kind = (KindVM)f.Kind,
+
                     Status = (StatusVM)f.Status,
+
                     Priority = (PriorityVM)f.Priority,
+
                     Category = (CategoryVM)f.Category,
+
                     UpdateDate = f.UpdateDate,
+
                     Subject = f.Subject,
+
                     Id = f.Id,
+
                     ProjectId = f.ProjectId,
+
                     UserCreate = User.Identity.Name,
+
+
+
+
+
                     UpdatedBy = f.UpdatedBy,
                 });
             }
@@ -57,10 +73,10 @@ namespace MAP.Presentation.Controllers
         }
 
 
-        // GET: TeamLeader/Details/5
+        // GET: TeamLeader/Details/55
         public ActionResult Details(int id)
         {
-            Request R = MyRequestService.GetRequestById(id);
+           Request R = MyRequestService.GetRequestById(id);
 
             RequestVM RVM = new RequestVM();
 
