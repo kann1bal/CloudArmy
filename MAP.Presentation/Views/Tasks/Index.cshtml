@@ -82,7 +82,10 @@
                                 <td>
 
                                     @*@Html.ActionLink("Delete", "Delete", new { id=item.taskId })|*@
-                                    @Html.ActionLink("See More", "Details", new { id = item.taskId })
+                                    @Html.ActionLink("See More", "Details", new { id = item.taskId }) |
+                                    <a href="/tasks/BarChart?userId=@item.Id&projectId=@item.ProjectId">
+                                        Show chart
+                                    </a>
                                     @*@Html.ActionLink("Edit", "Edit", new { id = item.taskId })*@
                                 </td>
                             </tr>

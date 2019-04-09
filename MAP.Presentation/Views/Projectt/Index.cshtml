@@ -13,7 +13,8 @@
 </head>
 <body>
     <p>
-        @Html.ActionLink("Create New", "Create")
+        @Html.ActionLink("Create New", "Create")|
+        
     </p>
 
     <div class="span9">
@@ -65,12 +66,23 @@
                                     <td>
                                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                                        
+                                        <a href="/tasks/Index?Projectid=@item.ProjectId">
+                                            Show tasks
+                                        </a> |
+                                        <a href="/tasks/AfficherSuggestion?Projectid=@item.ProjectId">
+                                            Show suggered tasks
+                                        </a>
+
+                                        
                                     </td>
-
-
+                                    
+                                   
                                 </tr>
                             }
+
+                            
                         </tbody>
                     </table>
 
