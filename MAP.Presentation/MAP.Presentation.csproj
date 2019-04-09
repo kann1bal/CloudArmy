@@ -898,6 +898,8 @@
     <Content Include="Views\Meeting\IndexCalendar.cshtml" />
     <Content Include="Views\Document\IndexOthers.cshtml" />
     <Content Include="Views\Meeting\IndexOthers.cshtml" />
+    <Content Include="Views\Projectt\Indexothers.cshtml" />
+    <Content Include="Views\Document\DocumentByProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

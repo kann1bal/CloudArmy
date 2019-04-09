@@ -1,168 +1,176 @@
 ﻿@model MAP.Domain.Entities.Tasks
 
 @{
-    Layout = "~/Views/Shared/LayoutTeamLeader.cshtml";
-}
+    Layout = "~/Views/Shared/LayoutMember.cshtml";
+    }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>Tasks</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            
-            <dt>
-                @Html.DisplayNameFor(model => model.Description)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Description)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.startDate)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.startDate)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.deadline)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.deadline)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.complexity)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.complexity)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.rate)
-            </dt>
-    
-            <dd>
-                @if (Model.rate == 0)
-                {
-                    for (var i = 1; i < 6; i++)
-                    {
-                        <img src="~/Mail/star1.png" alt="Sample Photo"  style="width: 50px;height:42.5;"/>
-                    }
-                }
-                @if (Model.rate == -1)
-                {
-                    <p>Not yet !</p>
-                }
-                @if (Model.rate == 1)
-                {  
-                    <img src="~/Mail/star0.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
-                    for (var i = 1; i < 5; i++)
-                    {
-                        <img src="~/Mail/star1.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
-                    }
+<div class="span9">
+    <div class="content">
 
-                }
-                @if (Model.rate == 2)
-                {
-                    for (var i = 1; i < 3; i++)
-                    {
-                        <img src="~/Mail/star0.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
-                    }
-                    for (var i = 1; i < 4; i++)
-                    {
-                        <img src="~/Mail/star1.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
-                    }
+        <div class="module">
+            <div class="module-head">
+                <h2 class="align-center">Details</h2>
+               
 
-                }
-                @if (Model.rate == 3)
-                {
-                    for (var i = 1; i < 4; i++)
-                    {
-                        <img src="~/Mail/star0.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
-                    }
-                    for (var i = 1; i < 3; i++)
-                    {
-                        <img src="~/Mail/star1.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
-                    }
+             
 
-                }
-                @if (Model.rate == 4)
-                {
-                    for (var i = 1; i < 5; i++)
-                    {
-                        <img src="~/Mail/star0.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
-                    }
-                    
-                        <img src="~/Mail/star1.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+            </div>
+            <div class="module-body">
 
-                }
-                @if (Model.rate == 5)
-                {
-                    for (var i = 1; i < 6; i++)
-                    {
-                        <img src="~/Mail/star0.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
-                    }
+                <div>
+                    <h4>Tasks</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
 
-                }
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.status)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.status)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.progress)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.progress)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.IsDone)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.IsDone)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.SpentTime)
-            </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Description)
+                        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.SpentTime)
-            </dd>
-            <dd>
-                @Html.ActionLink("+ Progress", "EditProgress1", new { id = Model.taskId }) |
-                @Html.ActionLink("- Progress", "EditProgress2", new { id = Model.taskId }) |        
-            </dd>
-            <dd>
-                @if (Model.IsDone==MAP.Domain.Entities.IsDone.NotDone)
-                {
-                    <a href="/tasks/EditDone?id=@Model.taskId">Mark as Done</a>
-                }
-            </dd>
-    
-        </dl>
+                        <dd>
+                            @Html.DisplayFor(model => model.Description)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.startDate)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.startDate)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.deadline)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.deadline)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.complexity)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.complexity)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.rate)
+                        </dt>
+
+                        <dd>
+                            @if (Model.rate == 0)
+                            {
+                                for (var i = 1; i < 6; i++)
+                                {
+                                    <img src="~/Mail/star1.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+                                }
+                            }
+                            @if (Model.rate == -1)
+                            {
+                                <p>Not yet !</p>
+                            }
+                            @if (Model.rate == 1)
+                            {
+                                <img src="~/Mail/star0.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+                                for (var i = 1; i < 5; i++)
+                                {
+                                    <img src="~/Mail/star1.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+                                }
+
+                            }
+                            @if (Model.rate == 2)
+                            {
+                                for (var i = 1; i < 3; i++)
+                                {
+                                    <img src="~/Mail/star0.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+                                }
+                                for (var i = 1; i < 4; i++)
+                                {
+                                    <img src="~/Mail/star1.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+                                }
+
+                            }
+                            @if (Model.rate == 3)
+                            {
+                                for (var i = 1; i < 4; i++)
+                                {
+                                    <img src="~/Mail/star0.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+                                }
+                                for (var i = 1; i < 3; i++)
+                                {
+                                    <img src="~/Mail/star1.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+                                }
+
+                            }
+                            @if (Model.rate == 4)
+                            {
+                                for (var i = 1; i < 5; i++)
+                                {
+                                    <img src="~/Mail/star0.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+                                }
+
+                                <img src="~/Mail/star1.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+
+                            }
+                            @if (Model.rate == 5)
+                            {
+                                for (var i = 1; i < 6; i++)
+                                {
+                                    <img src="~/Mail/star0.png" alt="Sample Photo" style="width: 50px;height:42.5;" />
+                                }
+
+                            }
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.status)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.status)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.progress)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.progress)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.IsDone)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.IsDone)
+                        </dd>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.SpentTime)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SpentTime)
+                        </dd>
+                        <dd>
+                            @Html.ActionLink("+ Progress", "EditProgress1", new { id = Model.taskId }) |
+                            @Html.ActionLink("- Progress", "EditProgress2", new { id = Model.taskId }) |
+                        </dd>
+                        <dd>
+                            @if (Model.IsDone == MAP.Domain.Entities.IsDone.NotDone)
+                            {
+                                <a href="/tasks/EditDone?id=@Model.taskId">Mark as Done</a>
+                            }
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                    <a href="/Tasks/Index?projectId=@Model.ProjectId">Back to List</a>
+                </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <p>
-        <a href="/Tasks/Index?projectId=@Model.projectId">Back to List</a>
-    </p>
-</body>
-</html>

@@ -34,7 +34,7 @@ namespace MAP.Service
 
             return DocumentDomain;
         }
-        public List<Documentt> getTasksbyIdProject(int ProjectId)
+        public List<Documentt> GetDocumentbyIdProject(int ProjectId)
         {
             List<Documentt> ListDocuments = new List<Documentt>();
             ListDocuments = GetMany(b => b.ProjectId==ProjectId).ToList();

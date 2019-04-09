@@ -19,9 +19,10 @@ namespace MAP.Presentation.Controllers
 
     {
         public string x;
-         public static int CurrentUserStatus;
-
         
+        public static int CurrentUserStatus;
+        public static int CurrentUserId;
+
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -95,6 +96,7 @@ namespace MAP.Presentation.Controllers
                 case SignInStatus.Success:
                    User u = await UserManager.FindAsync(model.Email , model.Password);
                     CurrentUserStatus = u.status;
+                    CurrentUserId = u.Id;
                     if (u.status==1)
                     {
                         

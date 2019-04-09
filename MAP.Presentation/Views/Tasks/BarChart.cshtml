@@ -1,5 +1,7 @@
 ﻿@model DotNet.Highcharts.Highcharts
-
+@{
+    Layout = "~/Views/Shared/LayoutMember.cshtml";
+}
 @{
     ViewBag.Title = "Column with rotated labels";
 }
@@ -10,7 +12,7 @@
 <script type="text/javascript">
     function TooltipFormatter() {
         return '<b>' + this.x + '</b><br/>' +
-                'Your progress in this project: ' + Highcharts.numberFormat(this.y, 1)
-                ;
+            'Your progress in this project: ' + Highcharts.numberFormat(this.y, 1)
+            ;
     }
 </script>

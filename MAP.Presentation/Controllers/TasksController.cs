@@ -25,7 +25,7 @@ namespace MAP.Presentation.Controllers
         public ActionResult Index(int ProjectId)
         {
             ViewBag.id = ProjectId;
-            var List = ts.getTasksbyIdProject(ProjectId,1);
+            var List = ts.getTasksbyIdProject(ProjectId,AccountController.CurrentUserId);
             if (AccountController.CurrentUserStatus == 2)
             {
                 x = "Manager";
@@ -115,7 +115,19 @@ namespace MAP.Presentation.Controllers
         public ActionResult Create(int ProjectId)
         {
             TasksController.ProjectId = ProjectId;
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View();
+          
         }
 
         // POST: Tasks/Create
@@ -126,7 +138,7 @@ namespace MAP.Presentation.Controllers
             {
                 // TODO: Add insert logic here
                 t.ProjectId = TasksController.ProjectId;
-                t.Id = 1;
+                t.Id = AccountController.CurrentUserId;
                 t.status = Statuss.suggested;
                 t.progress = Progress.level0;
                 t.IsDone = IsDone.NotDone;
@@ -154,14 +166,14 @@ namespace MAP.Presentation.Controllers
 
         //************************Pie chart************************
 
-        public ActionResult PieChart(int userId)
+        public ActionResult PieChart()
         {
             long pourcentageDone=0, pourcentageNotDone=0;
-            int total = (int)ts.CountAllTasks(userId);
+            int total = (int)ts.CountAllTasks(AccountController.CurrentUserId);
             if (total != 0)
             {
-                pourcentageDone = (long)((ts.CountAllTasksDone(userId) * 100) / total);
-                pourcentageNotDone = (long)((ts.CountAllTasksNotDone(userId) * 100) / total);
+                pourcentageDone = (long)((ts.CountAllTasksDone(AccountController.CurrentUserId) * 100) / total);
+                pourcentageNotDone = (long)((ts.CountAllTasksNotDone(AccountController.CurrentUserId) * 100) / total);
             }
            
 
@@ -194,7 +206,17 @@ namespace MAP.Presentation.Controllers
                     }
                     )
                 });
-
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View(chart);
         }
 
@@ -202,7 +224,7 @@ namespace MAP.Presentation.Controllers
         //*************************Bar chart*********
 
 
-        public ActionResult BarChart(int userId ,int projectId)
+        public ActionResult BarChart(int projectId)
         {
             Highcharts chart = new Highcharts("chart")
              .InitChart(new Chart { Type = ChartTypes.Column, Margin = new[] { 50, 50, 100, 80 } })
@@ -249,7 +271,7 @@ namespace MAP.Presentation.Controllers
                                 Name = "Population",
                                 Data = new DotNet.Highcharts.Helpers.Data(new object[]
                                 {
-                        ts.CountAllProjectNotDone(userId,projectId), ts.CountAllProjectsDone(userId,projectId)
+                        ts.CountAllProjectNotDone(AccountController.CurrentUserId,projectId), ts.CountAllProjectsDone(AccountController.CurrentUserId,projectId)
                                 }),
                             });
 
@@ -287,8 +309,19 @@ namespace MAP.Presentation.Controllers
         public ActionResult AfficherSuggestion(int ProjectId)
         {
             ViewBag.id = ProjectId;
-            int x = 1;
-            var List = ts.getTasksbyIdSuggested(ProjectId,x);
+            
+            var List = ts.getTasksbyIdSuggested(ProjectId, AccountController.CurrentUserId);
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View(List);
         }
 

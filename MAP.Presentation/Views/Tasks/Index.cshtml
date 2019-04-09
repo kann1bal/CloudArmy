@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<MAP.Domain.Entities.Tasks>
-
+@{
+    Layout = "~/Views/Shared/LayoutMember.cshtml";
+}
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/LayoutTeamLeader.cshtml";
-
 }
 
 
@@ -14,8 +14,7 @@
 
         <div class="module">
             <div class="module-head">
-                <h3>Tasks List</h3>
-                <p class="align-right"><button class="add-on"></button></p>
+                <h3 class="align-center">Tasks List </h3>
             </div>
             <div class="module-body">
 
@@ -98,5 +97,4 @@
 
 
 
-                </body>
-                </html>
+              

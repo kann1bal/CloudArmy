@@ -60,6 +60,36 @@ namespace MAP.Presentation.Controllers
             return View(Projects);
         }
 
+        public ActionResult Indexothers(string searchString)
+        {
+            var Projects = new List<ProjectVM>();
+
+            foreach (Project f in MyProjectService.SearchProjectsByName(searchString))
+            {
+                Projects.Add(new ProjectVM()
+                {
+                    ProjectId = f.ProjectId,
+                    Title = f.Title,
+                    Description = f.Description,
+                    // Branche = (BrancheVM)f.Branche,
+                    ImageUrl = f.ImageUrl,
+                    OutDate = f.OutDate,
+                    Id = f.Id
+                });
+            }
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
+            return View(Projects);
+        }
         [HttpGet]
         // GET: Project/Details/5
       

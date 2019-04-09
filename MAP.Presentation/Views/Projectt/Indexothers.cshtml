@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MAP.Presentation.Models.ProjectVM>
 
 @{
-    Layout = "~/Views/Shared/LayoutMember.cshtml";
+    Layout = "~/Views/Shared/LayoutTeamLeader.cshtml";
 }
 
 <!DOCTYPE html>
@@ -22,7 +22,8 @@
 
             <div class="module">
                 <div class="module-head">
-                    <h2 class="align-center">ProjectList</h2>
+                    <h3>Meetings List</h3>
+                    <p class="align-right"><button class="add-on"></button></p>
                 </div>
                 <div class="module-body">
 
@@ -67,19 +68,7 @@
                                         @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                                         @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
 
-                                        <a href="/tasks/Index?Projectid=@item.ProjectId">
-                                            Show tasks
-                                        </a>|
-                                        <a href="/Document/DocumentByProject?Projectid=@item.ProjectId">
-                                            Document
-                                        </a>|
-                                        <a href="/tasks/AfficherSuggestion?Projectid=@item.ProjectId">
-                                            Show suggested tasks
-                                        </a>|
-                                        <a href="/tasks/BarChart?userId=@item.Id&projectId=@item.ProjectId">
-                                            Show chart of tasks
-                                        </a>
-
+                                      
 
 
                                     </td>

@@ -74,6 +74,25 @@ namespace MAP.Presentation.Controllers
            
             return View(documents);
         }
+        public ActionResult DocumentByProject(int ProjectId)
+        {
+            ViewBag.id = ProjectId;
+
+            var List = MyDocService.GetDocumentbyIdProject(ProjectId);
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
+            return View(List);
+        }
+
 
         public ActionResult IndexOthers(string searchString)
         {
