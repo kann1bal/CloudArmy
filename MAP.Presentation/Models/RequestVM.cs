@@ -46,7 +46,8 @@ namespace MAP.Presentation.Models
         [Display(Name = "Dedicated To")]
         public int? Id { get; set; }
         IEnumerable<SelectListItem> Users { get; set; }
-        public virtual UserModel UserVM{ get; set; }
+       
+        
 
 
 

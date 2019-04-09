@@ -16,8 +16,11 @@ namespace MAP.Presentation.Controllers
 {
     [Authorize]
     public class AccountController : Controller
-    {
 
+    {
+         public static int CurrentUserStatus;
+
+        
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -90,20 +93,25 @@ namespace MAP.Presentation.Controllers
             {
                 case SignInStatus.Success:
                    User u = await UserManager.FindAsync(model.Email , model.Password);
+                    CurrentUserStatus = u.status;
                     if (u.status==1)
                     {
+                        
                         return RedirectToAction("Index","Back");
                     }
                     if (u.status ==2)
                     {
+                       
                         return RedirectToAction("Index", "Manager");
                     }
                     if (u.status==3)
                     {
+                        
                         return RedirectToAction("Index", "TeamLeader");
                     }
                     if (u.status==4)
                     {
+                    
                         return RedirectToAction("Index", "Member");
                     }
                     return RedirectToLocal(returnUrl);
@@ -114,6 +122,8 @@ namespace MAP.Presentation.Controllers
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
+
+                    
                     return View(model);
             }
            

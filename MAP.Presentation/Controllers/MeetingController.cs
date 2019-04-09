@@ -36,7 +36,7 @@ namespace MAP.Presentation.Controllers
         {
             var Meetings = new List<MeetingVM>();
 
-            foreach (Meeting f in MyMeetingService.GetMany())
+            foreach (Meeting f in MyMeetingService.SearchMeetingsByName(searchString))
             {
                 Meetings.Add(new MeetingVM()
                 {

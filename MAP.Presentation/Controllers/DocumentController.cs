@@ -10,6 +10,7 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using Rotativa.MVC;
+using MAP.Presentation.Controllers;
 
 
 namespace MAP.Presentation.Controllers
@@ -22,6 +23,7 @@ namespace MAP.Presentation.Controllers
 
         IDocumentService MyDocService;
         IProjectService MyProjectService;
+        IProjectService MyeditProjectService;
 
 
         public DocumentController()
@@ -29,6 +31,7 @@ namespace MAP.Presentation.Controllers
             MyDocService = new DocumentService();
 
             MyProjectService = new ProjectService();
+            MyeditProjectService= new ProjectService();
         }
         // GET: Documentt
         public ActionResult Index(string searchString)
@@ -52,11 +55,11 @@ namespace MAP.Presentation.Controllers
                     ProjectNames = MyProjectService.GetById((int)f.ProjectId).Title,
                     Extension = Path.GetExtension(f.ImageUrl)
             });
-              
-              
+
 
             }
 
+           
             return View(documents);
         }
 
@@ -168,15 +171,7 @@ namespace MAP.Presentation.Controllers
         public ActionResult Edit(int id)
         {
             System.Diagnostics.Debug.WriteLine("********* this is mee ");
-            var MyProjectsedit = MyProjectService.GetMany();
-
-
-            var listp = MyProjectsedit.ToList();
-            System.Diagnostics.Debug.WriteLine("testtttttttttt ***" + listp[1].ProjectId);
-
-
-
-            ViewBag.ListProjectsedit = new SelectList(MyProjectsedit, "ProjectId", "Title");
+            
             //viewbag :variable pour tronsporter les données du controller lil vue 
 
             var p = MyDocService.GetById(id);
@@ -189,7 +184,7 @@ namespace MAP.Presentation.Controllers
             DocVm.TypeVm = (TypeVm)p.FileType;
             return View(DocVm);
         }
-
+        
 
         // POST: Documentt/Edit/5
         [HttpPost]
