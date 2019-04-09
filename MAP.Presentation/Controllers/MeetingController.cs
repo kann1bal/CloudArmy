@@ -272,6 +272,45 @@ namespace MAP.Presentation.Controllers
             return View();
         }
 
+        public ActionResult Statistic()
+        {
+           
+            return View();
+        }
+        public ActionResult GetNumber()
+        {
+            
+            int tocome = MyMeetingService.GetNbMeetingAfter(DateTime.Now);
+            int done = MyMeetingService.GetNbMeetingBefore(DateTime.Now);
+            int today = MyMeetingService.GetNbMeeting(DateTime.Now);
+            
+
+            int total = today + tocome + done;
+           
+
+            countNumber obj = new countNumber();
+
+
+            obj.today = today;
+            obj.tocome = tocome;
+            obj.done = done;
+            obj.total = total;
+           
+            return Json(obj, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public class countNumber
+        {
+            public int today { get; set; }
+            public int tocome { get; set; }
+            public int done { get; set; }
+            public int total { get; set; }
+            
+        }
+
+
+
 
     }
 }

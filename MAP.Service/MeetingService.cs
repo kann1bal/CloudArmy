@@ -13,6 +13,7 @@ namespace MAP.Service
 {
     public class MeetingService:Service<Meeting>, IMeetingService
     {
+        public UserService u;
         static IDataBaseFactory Factory = new DataBaseFactory(); //usine de fabrication du contexte
         static IUnitOfWork utk = new UnitOfWork(Factory); //communication avec la base
         public MeetingService():base(utk)
@@ -50,6 +51,12 @@ namespace MAP.Service
             return utk.getRepository<Meeting>().GetMany().Where(e => e.Date == Date).Count();
         }
 
+        public IEnumerable<Meeting> GetMeetingParProjet(int ProjectId, int UserId)
+        {
+            return utk.getRepository<Meeting>().GetMany().Where(e => e.ProjectId == ProjectId && e.Id == UserId);
+        }
+
+       
 
         /*ProjectService pservice;
         public String GetProjectNameById(int id)
