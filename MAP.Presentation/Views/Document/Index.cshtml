@@ -41,6 +41,9 @@
                                 <div>
                                     Search by Name: @Html.TextBox("searchString")
                                 </div>
+                                <div>
+                                    Currentss Status User: @ViewBag.userstatus
+                                </div>
                             </td>
                             <td>
                                 <div>
@@ -84,7 +87,7 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                
+
 
                                 <td>
                                     <a href="#" data-toggle="popover" data-trigger="hover" id="@item.DocumentId">@item.Name</a>
@@ -140,7 +143,7 @@
                             var element = $(this);
                             var id = element.attr("id");
                             $.ajax({
-                                url: "/Documentt/DetailsAjax?id" + id,
+                                url: "/Document/DetailsAjax?id" + id,
                                 method: "Get",
                                 async: false,
                                 data: { id: id },

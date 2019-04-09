@@ -6,88 +6,87 @@
 }
 
 
-    <div class="span9">
-        <div class="content">
-            <div class="module">
+<div class="span9">
+    <div class="content">
+        <div class="module">
 
-                <div class="code-cut">
-                    <div>
-                        @using (Html.BeginForm())
-                        {
-                            <table>
-                                <tr>
-                                    <td>
-                                        <div>
-                                            Search a request by name :
-                                            @Html.TextBox("searchString")
+            <div class="code-cut">
+                <div>
+                    @using (Html.BeginForm())
+                    {
+                        <table>
+                            <tr>
+                                <td>
+                                    <div>
+                                        Search a request by name :
+                                        @Html.TextBox("searchString")
 
-                                        </div>
-                                    </td>
-                                    <td>                 <input type="submit" value="Search" id="submit" class="btn btn-default" />             </td>
-                                </tr>
-                            </table>
-                        }
-                    </div>
-                    <p>
-                        @Html.ActionLink("Create New", "Create")
-                    </p>
-                    <div>
-                        @(Html.Grid(Model).Columns(Columns =>
-                                            {
-                                                Columns.Add(foo => foo.Name).Titled("Name").Filterable(true);
-                                                Columns.Add(foo => foo.Subject).Titled("Subject").Sortable(true).Filterable(true);
-                                                Columns.Add(foo => foo.UpdateDate).Titled("UpdateDate").Sortable(true).Format("{0:dd/MM/yyyy}"); ;
-                                                Columns.Add(foo => foo.Id).Titled("Dedicated To").Sortable(true);
-                                                Columns.Add(foo => foo.ProjectId).Titled("Project Name").Sortable(true);
-                                                Columns.Add(foo => foo.Kind).Titled("Kind");
-                                                Columns.Add(foo => foo.Status).Titled("Status");
-                                                Columns.Add(foo => foo.Priority).Titled("Priority");
-                                                Columns.Add(foo => foo.Category).Titled("Category");
-                                                Columns.Add(foo => foo.UpdatedBy).Titled("Updated By");
-                                                Columns.Add()
-                                                .Encoded(false)
-                                                .Sanitized(false)
-                                                .SetWidth(3)
-                                                .RenderValueAs(o => Html.ActionLink("Change Request State", "Edit", new { Id = o.RequestId }));
-                                                Columns.Add()
-                                               .Encoded(false)
-                                               .Sanitized(false)
-                                               .SetWidth(3)
-                                               .RenderValueAs(o => Html.ActionLink("Delete", "Delete", new { Id = o.RequestId }));
-                                                Columns.Add()
-                                               .Encoded(false)
-                                               .Sanitized(false)
-                                               .SetWidth(3)
-                                               .RenderValueAs(o => Html.ActionLink("Details", "Details", new { Id = o.RequestId }));
-                                            })
+                                    </div>
+                                </td>
+                                <td>                 <input type="submit" value="Search" id="submit" class="btn btn-default" />             </td>
+                            </tr>
+                        </table>
+                    }
+                </div>
+                <p>
+                    @Html.ActionLink("Create New", "Create")
+                </p>
+                <div>
+                    @(Html.Grid(Model).Columns(Columns =>
+                                                {
+                                                    Columns.Add(foo => foo.Name).Titled("Name").Filterable(true);
+                                                    Columns.Add(foo => foo.Subject).Titled("Subject").Sortable(true).Filterable(true);
+                                                    Columns.Add(foo => foo.UpdateDate).Titled("UpdateDate").Sortable(true).Format("{0:dd/MM/yyyy}"); ;
+                                                    Columns.Add(foo => foo.Id).Titled("Dedicated To").Sortable(true);
+                                                    Columns.Add(foo => foo.ProjectId).Titled("Project Name").Sortable(true);
+                                                    Columns.Add(foo => foo.Kind).Titled("Kind");
+                                                    Columns.Add(foo => foo.Status).Titled("Status");
+                                                    Columns.Add(foo => foo.Priority).Titled("Priority");
+                                                    Columns.Add(foo => foo.Category).Titled("Category");
+                                                    Columns.Add(foo => foo.UpdatedBy).Titled("Updated By");
+                                                    Columns.Add()
+                                                    .Encoded(false)
+                                                    .Sanitized(false)
+                                                    .SetWidth(3)
+                                                    .RenderValueAs(o => Html.ActionLink("Change Request State", "Edit", new { Id = o.RequestId }));
+                                                    Columns.Add()
+                                                   .Encoded(false)
+                                                   .Sanitized(false)
+                                                   .SetWidth(3)
+                                                   .RenderValueAs(o => Html.ActionLink("Delete", "Delete", new { Id = o.RequestId }));
+                                                    Columns.Add()
+                                                   .Encoded(false)
+                                                   .Sanitized(false)
+                                                   .SetWidth(3)
+                                                   .RenderValueAs(o => Html.ActionLink("Details", "Details", new { Id = o.RequestId }));
+                                                })
 
-                        )
-                    </div>
-
-
+                    )
                 </div>
 
 
-
             </div>
-        </div><!--/.content-->
-    </div><!--/.span9-->
+
+
+
+        </div>
+    </div><!--/.content-->
+</div><!--/.span9-->
     </div>
     </div><!--/.container-->
     </div><!--/.wrapper-->
-    <div class="footer">
-        <div class="container">
+<div class="footer">
+    <div class="container">
 
 
-            <b class="copyright">&copy; 2019  - Cloud Army </b> All rights reserved.
-        </div>
+        <b class="copyright">&copy; 2019  - Cloud Army </b> All rights reserved.
     </div>
-    <link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
-    <script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
-    <script src="~/Assets/Manager/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="~/Assets/Manager/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-    <script src="~/Assets/Manager/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="~/Assets/Manager/scripts/flot/jquery.flot.js" type="text/javascript"></script>
-   
+</div>
+<link href="@Url.Content("~/Content/Gridmvc.css")" rel="stylesheet" type="text/css" />
+<script src="@Url.Content("~/Scripts/gridmvc.min.js")" type="text/javascript"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Assets/Manager/scripts/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="~/Assets/Manager/scripts/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+<script src="~/Assets/Manager/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="~/Assets/Manager/scripts/flot/jquery.flot.js" type="text/javascript"></script>

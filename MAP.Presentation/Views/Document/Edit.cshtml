@@ -24,7 +24,7 @@
 
 
 
-                
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
@@ -52,20 +52,11 @@
                 <br />
 
 
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.ProjectId, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("ProjectId", (SelectList)ViewData["ListProjectsedit"])
-                        @Html.ValidationMessageFor(model => model.ProjectId, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
                 <br />
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
                         <p class="align-center">
-                            <input type="submit" value="Save" class="btn btn-default" />
+                            <input type="submit" value="Save" class="btn btn-default" href="@Url.Action("Index", "Document")" />
                         </p>
                     </div>
                 </div>

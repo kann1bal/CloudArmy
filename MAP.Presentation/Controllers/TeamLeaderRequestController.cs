@@ -85,13 +85,14 @@ namespace MAP.Presentation.Controllers
         // GET: TeamLeader/Create
         public ActionResult Create()
         {
-
+            
 
             var MyProjectCs = MyProjectService.GetMany();
             var MyDedicatedTo = MyDedicatedService.GetMany();
 
             ViewBag.ListProjectCs = new SelectList(MyProjectCs, "ProjectId", "Title");
             ViewBag.ListDedicated = new SelectList(MyDedicatedTo, "Id", "UserName");
+            
 
             //viewbag :variable pour tronsporter les données du controller lil vue 
             return View();
@@ -114,8 +115,7 @@ namespace MAP.Presentation.Controllers
                 Id = RequestVM.Id,
                 UserCreate = User.Identity.Name,
                 ProjectId = RequestVM.ProjectId,
-                UpdatedBy = User.Identity.Name,
-
+                
 
 
             };
@@ -126,68 +126,44 @@ namespace MAP.Presentation.Controllers
             return RedirectToAction("Table");
         }
 
+
         // GET: TeamLeader/Edit/5
-        [HttpGet]
         public ActionResult Edit(int id)
         {
-            Request R = MyRequestService.GetRequestById(id);
-            RequestVM RVM = new RequestVM();
-
-            //if (p == null)
-            // {
-            //return HttpNotFound();
-            //   return View();
-            //  }
-
-
-            // RVM.Name = R.Name;
-            // RVM.Kind = (KindVM)R.Kind;
-            // RVM.Priority = (PriorityVM)R.Priority;  
-             RVM.Status = (StatusVM)R.Status;
-            // RVM.Category = (CategoryVM)R.Category;
-            //    RVM.UpdateDate = R.UpdateDate;
-            //  RVM.Subject = R.Subject;
-            // RVM.Author = R.Author;
-            // RVM.ProjectCId = R.ProjectCId;
-            // RVM.UserIId = R.UserIId;
-
-
-
-
-            return View(RVM);
+            return View();
         }
 
+        // POST: TeamLeader/Edit/5
         
-       // TeamLeader/Edit/5
+            
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async System.Threading.Tasks.Task<ActionResult> Edit(int id, Request RVM)
+        public async System.Threading.Tasks.Task<ActionResult> Edit(int id, RequestVM RVM)
         {
             try
             {
+
                 // TODO: Add update logic here
                 Request R = MyRequestService.GetRequestById(id);
 
 
-                //  R.Name = RVM.Name;
-                //  R.Kind = RVM.Kind;
-                // R.Priority = RVM.Priority;
-                //  R.Category = RVM.Category;
-                R.Status = RVM.Status;
-                //R.UpdatedBy = User.Identity.Name;
-                //  R.UpdateDate = RVM.UpdateDate;
-                //  R.Subject = RVM.Subject;
-                // R.Author = RVM.Author;
+
+                R.Status = (Status)RVM.Status;
+                R.UpdatedBy = User.Identity.Name;
+
 
                 MyRequestService.Update(R);
                 MyRequestService.Commit();
                 var body = "<p>Email From: {0} ({1})</p><p>Message:</p><p>{2}</p>";
                 var message = new MailMessage();
+                System.Diagnostics.Debug.WriteLine("*******" + R.UserCreate);
+
                 message.To.Add(new MailAddress(R.UserCreate));  // replace with valid value 
                 message.From = new MailAddress(User.Identity.Name);  // replace with valid value
                 message.Subject = "Request Answer ! ";
                 message.Body = string.Format(body, "Request services", User.Identity.Name, "Dear Applicant your request has been " + R.Status);
                 message.IsBodyHtml = true;
+
 
                 using (var smtp = new SmtpClient())
                 {
@@ -205,12 +181,14 @@ namespace MAP.Presentation.Controllers
 
                 }
 
+
                 return RedirectToAction("Table");
             }
             catch (Exception)
             {
                 return View(RVM);
             }
+
         }
         // GET: TeamLeader/Delete/5
         public ActionResult Delete(int Id)

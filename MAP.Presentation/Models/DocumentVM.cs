@@ -32,10 +32,9 @@ namespace MAP.Presentation.Models
         public string Extension { get; set; }
 
         public string ProjectNames { get; set; }
-        [Display(Name = "Project")]
+        [Display(Name = "Project Name")]
         public int? ProjectId { get; set; }
-        public IEnumerable<SelectListItem> Projects { get; set; }
-
+        IEnumerable<SelectListItem> Projects { get; set; }
     }
 
 }
