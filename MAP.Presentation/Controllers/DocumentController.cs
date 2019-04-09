@@ -18,6 +18,7 @@ namespace MAP.Presentation.Controllers
     public class DocumentController : Controller
     {
        static  int Id4Dowload;
+        public string x;
         public enum Choix { Name, Project };
 
 
@@ -56,15 +57,64 @@ namespace MAP.Presentation.Controllers
                     Extension = Path.GetExtension(f.ImageUrl)
             });
 
-
+                if (AccountController.CurrentUserStatus == 2)
+                {
+                    x = "Manager";
+                }
+                else if (AccountController.CurrentUserStatus == 3)
+                {
+                    x = "Team Leader";
+                }
+                else
+                { x = "Membre"; }
+                ViewBag.CurrentUserStatus = x;
             }
+
 
            
             return View(documents);
         }
 
-        /// index vue partielle 
-        public ActionResult Indexpartielle(string searchString)
+        public ActionResult IndexOthers(string searchString)
+        {
+
+            var documents = new List<DocumentVM>();
+
+
+            foreach (Documentt f in MyDocService.SearchDocumentByName(searchString))
+            {
+
+                documents.Add(new DocumentVM()
+                {
+                    DocumentId = f.DocumentId,
+                    DateDoc = f.DateDoc,
+                    Name = f.Name,
+                    Size = f.Size,
+                    TypeVm = (TypeVm)f.FileType,
+                    ImageUrl = f.ImageUrl,
+                    ProjectId = f.ProjectId,
+                    ProjectNames = MyProjectService.GetById((int)f.ProjectId).Title,
+                    Extension = Path.GetExtension(f.ImageUrl)
+                });
+
+                
+            }
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
+            return View(documents);
+        }
+
+            /// index vue partielle 
+            public ActionResult Indexpartielle(string searchString)
         {
 
             var documents = new List<DocumentVM>();
@@ -115,7 +165,17 @@ namespace MAP.Presentation.Controllers
 
 
 
-
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
 
             return View(Docvm);
 
@@ -164,6 +224,17 @@ namespace MAP.Presentation.Controllers
             smtpClient.Credentials = new System.Net.NetworkCredential("zied.ue@gmail.com", "123456aze");
             smtpClient.Send(mail);
             /// https://www.google.com/settings/security/lesssecureapps go to link and alllow 
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return RedirectToAction("Index");
         }
 
@@ -182,6 +253,17 @@ namespace MAP.Presentation.Controllers
             DocVm.Name = a;
             DocVm.Size = p.Size;
             DocVm.TypeVm = (TypeVm)p.FileType;
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View(DocVm);
         }
         
@@ -199,6 +281,7 @@ namespace MAP.Presentation.Controllers
             p.FileType = (FileType)DocVm.TypeVm;
             MyDocService.Update(p);
             MyDocService.Commit();
+          
             return View();
 
         }
@@ -218,6 +301,19 @@ namespace MAP.Presentation.Controllers
             //Docvm.P = MyProjectService.GetById(p.ProjectId).Name;
             Docvm.ProjectId = p.ProjectId;
             Docvm.Extension = Path.GetExtension(p.ImageUrl);
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
+
+
             return View(Docvm);
         }
 
@@ -235,7 +331,7 @@ namespace MAP.Presentation.Controllers
             p.FileType = (FileType)DocVm.TypeVm;
             MyDocService.Delete(p);
             MyDocService.Commit();
-           
+            
             return RedirectToAction("index");
 
         }

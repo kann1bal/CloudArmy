@@ -20,7 +20,7 @@
             <div class="container">
                 <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-inverse-collapse">
                     <i class="icon-reorder shaded"></i>
-                </a><a class="brand" href="@Url.Action("Index", "TeamLeader")"> @ViewBag.userstatus </a>
+                </a><a class="brand" href="@Url.Action("Index", "TeamLeader")"> @ViewBag.CurrentUserStatus </a>
                
                 <div class="nav-collapse collapse navbar-inverse-collapse">
                     <ul class="nav nav-icons">
@@ -30,20 +30,8 @@
                     </ul>
 
                     <ul class="nav pull-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Dropdown
-                                <b class="caret"></b>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Item No. 1</a></li>
-                                <li><a href="#">Don't Click</a></li>
-                                <li class="divider"></li>
-                                <li class="nav-header">Example Header</li>
-                                <li><a href="#">A Separated link</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Support </a></li>
+                       
+                       
                         <li class="nav-user dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <img src="~/Assets/Manager/images/user.png" class="nav-avatar" />
@@ -54,7 +42,7 @@
                                 <li><a href="#">Edit Profile</a></li>
                                 <li><a href="#">Account Settings</a></li>
                                 <li class="divider"></li>
-                                <li><a href="@Url.Action("LogOff", "Account")"></a></li>
+                                <li><a href="@Url.Action("LogOff", "Account")">LogOut</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -72,7 +60,7 @@
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled">
                             <li class="active">
-                                <a href="@Url.Action("Index", "TeamLeader")">
+                                <a href="@Url.Action("Index", "TeamLeader")" >
                                     <i class="menu-icon icon-dashboard"></i>Home
                                 </a>
                             </li>
@@ -98,8 +86,8 @@
                                     </i>Documents
                                 </a>
                                 <ul id="togglePages" class="collapse unstyled">
-                                    <li><a href="@Url.Action("Index", "Document")"><i class="menu-icon icon-paste"></i>View Documents</a></li>
-                                    <li><a href="@Url.Action("Create", "Document")"><i class="menu-icon icon-table"></i>Add Document </a></li>
+                                    <li><a href="@Url.Action("IndexOthers", "Document")"><i class="menu-icon icon-paste"></i>View Documents</a></li>
+                                   
                                 </ul>
                             </li>
 
@@ -123,8 +111,8 @@
                                     </i>Meetings
                                 </a>
                                 <ul id="togglePage2" class="collapse unstyled">
-                                    <li><a href="@Url.Action("Index", "Meeting")"><i class="menu-icon icon-paste"></i>View Meetings</a></li>
-                                    <li><a href="@Url.Action("Create", "Meeting")"><i class="menu-icon icon-table"></i>Add Meeting </a></li>
+                                    <li><a href="@Url.Action("IndexOthers", "Meeting")"><i class="menu-icon icon-paste"></i>View Meetings</a></li>
+                                    
                                 </ul>
                             </li>
                         </ul>

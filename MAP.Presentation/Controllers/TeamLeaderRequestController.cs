@@ -14,7 +14,7 @@ namespace MAP.Presentation.Controllers
 {
     public class TeamLeaderRequestController : Controller
     {
-
+        public string x;
         ProjectContext context = new ProjectContext();
         IRequestService MyRequestService;
         IProjectService MyProjectService;
@@ -52,7 +52,17 @@ namespace MAP.Presentation.Controllers
                     UpdatedBy = f.UpdatedBy,
                 });
             }
-
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View(Requests);
         }
 
@@ -76,7 +86,17 @@ namespace MAP.Presentation.Controllers
             RVM.UserCreate = User.Identity.Name;
             RVM.UpdatedBy = R.UpdatedBy;
 
-
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
 
             return View(RVM);
 
@@ -92,9 +112,20 @@ namespace MAP.Presentation.Controllers
 
             ViewBag.ListProjectCs = new SelectList(MyProjectCs, "ProjectId", "Title");
             ViewBag.ListDedicated = new SelectList(MyDedicatedTo, "Id", "UserName");
-            
+
 
             //viewbag :variable pour tronsporter les données du controller lil vue 
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View();
         }
         // POST: TeamLeader/Create
@@ -130,6 +161,17 @@ namespace MAP.Presentation.Controllers
         // GET: TeamLeader/Edit/5
         public ActionResult Edit(int id)
         {
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View();
         }
 
@@ -206,6 +248,17 @@ namespace MAP.Presentation.Controllers
 
             RVM.ProjectId = R.ProjectId;
 
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
 
             return View(RVM);
         }
@@ -234,7 +287,17 @@ namespace MAP.Presentation.Controllers
         {
             var Requests = new List<RequestVM>();
 
-
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View(Requests);
         }
 

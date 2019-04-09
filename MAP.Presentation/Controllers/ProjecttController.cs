@@ -16,6 +16,7 @@ namespace MAP.Presentation.Controllers
 {
     public class ProjecttController : Controller
     {
+        public string x;
         User u = new User();
 
         IProjectService MyProjectService;
@@ -45,6 +46,17 @@ namespace MAP.Presentation.Controllers
                     Id = f.Id
                 });
             }
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View(Projects);
         }
 
@@ -62,6 +74,17 @@ namespace MAP.Presentation.Controllers
             VM.ImageUrl = p.ImageUrl;
             VM.OutDate = p.OutDate;
            VM.Id = p.Id;
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
 
             return View(VM);
 
@@ -75,6 +98,17 @@ namespace MAP.Presentation.Controllers
             var MyUsers = MyUserService.GetMany();
             ViewBag.ListUsers = new SelectList(MyUsers, "Id", "FirstName");
             //viewbag :variable pour tronsporter les données du controller lil vue 
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View();
         }
 

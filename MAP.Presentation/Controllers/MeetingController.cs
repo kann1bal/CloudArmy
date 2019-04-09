@@ -16,7 +16,7 @@ namespace MAP.Presentation.Controllers
 
     public class MeetingController : Controller
     {
-
+        public string x;
         IMeetingService MyMeetingService;
         IUserService MyUserService;
         IProjectService MyProjectService;
@@ -43,14 +43,60 @@ namespace MAP.Presentation.Controllers
                     Id = f.MeetingId,
                     Title = f.Title,
                     Date = f.Date,
-                    //ProjectName = f.Project.Name,
+                   
+                    ProjectName = MyMeetingService.GetById((int)f.ProjectId).Title,
                     Details = f.Details,
 
 
                 });
             }
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
+
             return View(Meetings);
             
+        }
+
+        public ActionResult IndexOthers(string searchString)
+        {
+            var Meetings = new List<MeetingVM>();
+
+            foreach (Meeting f in MyMeetingService.SearchMeetingsByName(searchString))
+            {
+                Meetings.Add(new MeetingVM()
+                {
+                    Id = f.MeetingId,
+                    Title = f.Title,
+                    Date = f.Date,
+
+                    ProjectName = MyMeetingService.GetById((int)f.ProjectId).Title,
+                    Details = f.Details,
+
+
+                });
+            }
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
+            return View(Meetings);
+
         }
 
 
@@ -67,6 +113,17 @@ namespace MAP.Presentation.Controllers
 
 
             //viewbag :variable pour tronsporter les données du controller lil vue 
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View();
         }
 
@@ -109,7 +166,17 @@ namespace MAP.Presentation.Controllers
             MVM.ProjectId = M.ProjectId;
             MVM.Id = M.Id;
             MVM.Details = M.Details;
-
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
 
             return View(MVM);
         }
@@ -149,6 +216,18 @@ namespace MAP.Presentation.Controllers
             MVM.Date = M.Date;
             MVM.Details = M.Details;
             MVM.ProjectId = M.ProjectId;
+
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View(MVM);
         }
 
@@ -175,6 +254,22 @@ namespace MAP.Presentation.Controllers
             {
                 return View(MVM);
             }
+        }
+
+        public ActionResult IndexCalendar()
+        {
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
+            return View();
         }
 
 

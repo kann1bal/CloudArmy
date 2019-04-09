@@ -8,9 +8,21 @@ namespace MAP.Presentation.Controllers
 {
     public class ManagerController : Controller
     {
+        public string x ;
         // GET: Manager
         public ActionResult Index()
         {
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View();
         }
 

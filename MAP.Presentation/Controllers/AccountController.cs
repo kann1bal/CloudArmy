@@ -18,6 +18,7 @@ namespace MAP.Presentation.Controllers
     public class AccountController : Controller
 
     {
+        public string x;
          public static int CurrentUserStatus;
 
         
@@ -123,7 +124,9 @@ namespace MAP.Presentation.Controllers
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
 
-                    
+
+                   
+
                     return View(model);
             }
            

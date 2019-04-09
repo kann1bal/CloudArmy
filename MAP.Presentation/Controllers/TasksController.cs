@@ -17,7 +17,7 @@ namespace MAP.Presentation.Controllers
 {
     public class TasksController : Controller
     {
-
+        public string x;
         public TasksService ts = new TasksService();
         public UserService us = new UserService();
         public static int? ProjectId;
@@ -26,6 +26,17 @@ namespace MAP.Presentation.Controllers
         {
             ViewBag.id = ProjectId;
             var List = ts.getTasksbyIdProject(ProjectId,1);
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
             return View(List);
         }
 
@@ -33,6 +44,18 @@ namespace MAP.Presentation.Controllers
         public ActionResult Details(int id)
         {
             Tasks t = ts.GetById(id);
+            if (AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
+
             return View(t);
         }
         public ActionResult EditDone(int id)
