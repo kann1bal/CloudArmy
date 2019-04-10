@@ -382,7 +382,7 @@ $(function () {
 
   $(document).on('click', '.ad-click-event', function (e) {
     e.preventDefault()
-    var category = 'Premium Template'
+    
     var action   = ''
     if ($(e.target).is('img')) {
       action = 'Image Buy Now'
@@ -418,7 +418,7 @@ $(function () {
   'use strict'
   var i = $('<i />', { 'class': 'fa fa-star-o' })
   i.css('color', '#fff')
-  var a = $('<a />', { href: 'https://themequarry.com' })
+  
   a.append(i)
   var span = $('<span />')
   span.append('Premium Templates')
@@ -484,7 +484,7 @@ $(function () {
   }
 
   var wrapper = $('<div />').css(wrapper_css)
-  var link    = $('<a />', { href: 'https://themequarry.com' })
+  
     .html('Ready to sell your theme? Submit your theme to our new marketplace now and let over 200k visitors see it!')
     .css(link_css)
     .hover(function () {
@@ -494,7 +494,6 @@ $(function () {
     })
   var btn     = $('<a />', {
     'class': 'btn btn-default btn-sm',
-    href   : 'https://themequarry.com'
   }).html('Let\'s Do It!').css(btn_css)
   var close   = $('<a />', {
     'class'         : 'float-right',

@@ -11,6 +11,8 @@ using Microsoft.Owin.Security;
 using MAP.Presentation.Models;
 using MAP.Domain.Entities;
 using MAP.Service;
+using MimeKit;
+using MailKit.Net.Smtp;
 
 namespace MAP.Presentation.Controllers
 {
@@ -194,7 +196,7 @@ namespace MAP.Presentation.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase Photo)
         {
 
             if (ModelState.IsValid)
@@ -203,20 +205,45 @@ namespace MAP.Presentation.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    result = await UserManager.AddToRoleAsync(user.Id, "Admin");
-                 
-                    // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    if (Photo != null)
+                    {
 
-                    return RedirectToAction("Index", "Home");
+                        string pic = System.IO.Path.GetFileName(Photo.FileName);
+                        string path = System.IO.Path.Combine(
+                                               Server.MapPath("~/Images"), pic);
+                        // file is uploaded
+                        Photo.SaveAs(path);
+                        user.Logo = pic;
+
+
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        result = await UserManager.AddToRoleAsync(user.Id, "Admin");
+                        var message = new MimeMessage();
+                        message.From.Add(new MailboxAddress("Account Creation", "Management"));
+                        message.To.Add(new MailboxAddress(user.FirstName, user.Email));
+                        message.Subject = "Account Creation Mail";
+                        message.Body = new TextPart("plain")
+                        {
+                            Text = "Hello" + " " + user.FirstName + " " + user.LastName + " " + "  welcome to our Plateforme Cloud Army"
+                        };
+                        using (var resource = new SmtpClient())
+                        {
+                            resource.Connect("smtp.gmail.com", 587, false);
+                            resource.Authenticate("cloud.army2019@gmail.com", "Cloudarmy19.");
+                            resource.Send(message);
+                            resource.Disconnect(true);
+                        }
+                        // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
+                        // Send an email with this link
+                        // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                        // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                        // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                        return RedirectToAction("Index", "Home");
+                    }
                 }
                 AddErrors(result);
             }
-
             // If we got this far, something failed, redisplay form
             return View(model);
         }

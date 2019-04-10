@@ -16,6 +16,7 @@ namespace MAP.Data
         {
 
         }
+    
 
         public DbSet<User> users { get; set; }
         public DbSet<CustomRole> roles { get; set; }

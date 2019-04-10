@@ -40,27 +40,19 @@ namespace MAP.Presentation.Controllers
             {
                 Meetings.Add(new MeetingVM()
                 {
-                    Id = f.MeetingId,
+                    MeetingId =f.MeetingId,
                     Title = f.Title,
                     Date = f.Date,
-                   
-                    ProjectName = MyMeetingService.GetById((int)f.ProjectId).Title,
+                    ProjectName = MyProjectService.GetById((int)f.ProjectId).Title,
+
+
+
                     Details = f.Details,
 
 
                 });
             }
-            if (AccountController.CurrentUserStatus == 2)
-            {
-                x = "Manager";
-            }
-            else if (AccountController.CurrentUserStatus == 3)
-            {
-                x = "Team Leader";
-            }
-            else
-            { x = "Membre"; }
-            ViewBag.CurrentUserStatus = x;
+            
 
             return View(Meetings);
             
@@ -74,7 +66,7 @@ namespace MAP.Presentation.Controllers
             {
                 Meetings.Add(new MeetingVM()
                 {
-                    Id = f.MeetingId,
+                    MeetingId = f.MeetingId,
                     Title = f.Title,
                     Date = f.Date,
 
@@ -141,7 +133,7 @@ namespace MAP.Presentation.Controllers
                 MeetingId = MeetingVM.MeetingId,
                 Title = MeetingVM.Title,
                 Date = MeetingVM.Date,
-                Id = 1,
+                Id = AccountController.CurrentUserId,
                 ProjectId = MeetingVM.ProjectId,
                 Details = MeetingVM.Details,
 
@@ -270,6 +262,77 @@ namespace MAP.Presentation.Controllers
             { x = "Membre"; }
             ViewBag.CurrentUserStatus = x;
             return View();
+        }
+        public ActionResult Statistic()
+        {
+
+            return View();
+        }
+        public ActionResult GetNumber()
+        {
+
+            int tocome = MyMeetingService.GetNbMeetingAfter(DateTime.Now);
+            int done = MyMeetingService.GetNbMeetingBefore(DateTime.Now);
+            int today = MyMeetingService.GetNbMeeting(DateTime.Now);
+
+
+            int total = today + tocome + done;
+
+
+            countNumber obj = new countNumber();
+
+
+            obj.today = today;
+            obj.tocome = tocome;
+            obj.done = done;
+            obj.total = total;
+
+            return Json(obj, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public class countNumber
+        {
+            public int today { get; set; }
+            public int tocome { get; set; }
+            public int done { get; set; }
+            public int total { get; set; }
+
+        }
+
+        public JsonResult GetMeetings()
+        {
+            {
+                var data = GetUsersHugeData();
+                return Json(data, JsonRequestBehavior.AllowGet);
+                //   return new JsonResult { Data = List, JsonRequestBehavior = JsonRequestBehavior.AllowGet };
+            }
+        }
+        public class CustomEvent
+        {
+            public int id { get; set; }
+            public String title { get; set; }
+            public String Detail { get; set; }
+            public String start { get; set; }
+
+        }
+
+        private List<CustomEvent> GetUsersHugeData()
+        {
+            var list = new List<CustomEvent>();
+
+            foreach (Meeting m in MyMeetingService.GetMany())
+            {
+                CustomEvent e = new CustomEvent();
+                e.id = m.MeetingId;
+                e.title = m.Title;
+                e.Detail = m.Details;
+                e.start = m.Date.ToString("yyyy-MM-dd");
+                list.Add(e);
+            }
+
+
+            return list;
         }
 
 

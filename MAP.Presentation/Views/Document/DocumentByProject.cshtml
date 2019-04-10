@@ -1,57 +1,61 @@
 ﻿@model IEnumerable<MAP.Domain.Entities.Documentt>
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/LayoutTeamLeader.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
     <meta name="viewport" content="width=device-width" />
     <title>DocumentByProject</title>
-</head>
-<body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-           
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Size)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ImageUrl)
-            </th>
-            
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Size)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageUrl)
-            </td>
-            
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.DocumentId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.DocumentId }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.DocumentId })
-            </td>
-        </tr>
-    }
-    
-    </table>
-</body>
-</html>
+
+
+    <div class="span9">
+        <div class="content">
+
+            <div class="module">
+                <div class="module-head">
+                    <h2 class="align-center">Documents</h2>
+                  
+
+                </div>
+                <div class="module-body">
+                    <table class="table">
+                        <tr>
+
+                            <th>
+                                @Html.DisplayNameFor(model => model.Name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Size)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ImageUrl)
+                            </th>
+
+                            <th></th>
+                        </tr>
+
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Size)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ImageUrl)
+                                </td>
+
+                                
+                            </tr>
+                        }
+
+                    </table>
+
+</div>
+</div>
+</div>
+</div>

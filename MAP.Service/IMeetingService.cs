@@ -12,6 +12,9 @@ namespace MAP.Service
     {
         IEnumerable<Meeting> SearchMeetingsByName(string searchString);
         Meeting GetMeetingById(int Id);
+        int GetNbMeetingBefore(DateTime Date);
+        int GetNbMeetingAfter(DateTime Date);
+       int GetNbMeeting(DateTime Date);
 
     }
 }

@@ -26,6 +26,25 @@ namespace MAP.Presentation.Controllers
             return View();
             
         }
+        public ActionResult Home()
+        {
+            if(AccountController.CurrentUserStatus == 2)
+            {
+                x = "Manager";
+            }
+            else if (AccountController.CurrentUserStatus == 3)
+            {
+                x = "Team Leader";
+            }
+            else
+            { x = "Membre"; }
+            ViewBag.CurrentUserStatus = x;
+            return View();
+            
+        }
+
+
+
 
         public ActionResult dashboard()
         {

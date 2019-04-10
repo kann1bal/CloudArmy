@@ -1,13 +1,14 @@
 ﻿
-@{
-    Layout = "~/Views/Shared/LayoutTeamLeader.cshtml";
-}
+
+
 
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.6.1/fullcalendar.min.css" type="text/css" rel="stylesheet" />
+
 </head>
 <body>
 
@@ -15,7 +16,9 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-xs-12">
-                            <center> <h2><b>Calendar </b></h2></center>
+                            <center> <h1><b>Calendar  </b></h1></center>
+                            <<a href="@Url.Action("Home", "TeamLeader")">
+                                    <i class="menu-icon icon-dashboard"></i>Home
                             <br />
                             <div id="bootstrapModalFullCalendar"></div>
                         </div>
@@ -43,22 +46,35 @@
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
                 <script>
                     $(document).ready(function () {
-                        $('#bootstrapModalFullCalendar').fullCalendar({
-                            header: {
-                                left: '',
-                                center: 'prev title next',
-                                right: ''
-                            },
-                            eventClick: function (event, jsEvent, view) {
-                                $('#modalTitle').html(event.title);
-                                $('#modalBody').html("<img src=" + event.fichier + ">");
-                                $('#eventUrl').attr('href', event.url);
-                                $('#fullCalModal').modal();
-                                return false;
-                            },
-                            events: ''
-
+                        $.ajax({
+                            type: "GET",
+                            url: "/Meeting/GetMeetings",
+                            success: function (data) {
+                                var events = [];
+                               
+                                loadCalendar(data);
+                            }
                         });
+
+                        function loadCalendar(myevents) {
+                            $('#bootstrapModalFullCalendar').fullCalendar({
+                                header: {
+                                    left: '',
+                                    center: 'prev title next',
+                                    right: ''
+                                },
+                                eventClick: function (event, jsEvent, view) {
+                                    $('#modalTitle').html(event.title);
+                                    $('#modalBody').html("<img src=" + event.fichier + ">");
+                                    $('#eventUrl').attr('href', event.url);
+                                    $('#fullCalModal').modal();
+                                    return false;
+                                },
+                                events: myevents
+
+                            });
+                        }
+                        
                     });
                 </script>
 </body>

@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MAP.Presentation.Models.ProjectVM>
 
 @{
-    Layout = "~/Views/Shared/LayoutMember.cshtml";
+    Layout = "~/Views/Shared/LayoutTeamLeader.cshtml";
 }
 
 <!DOCTYPE html>
@@ -17,12 +17,33 @@
 
     </p>
 
+   
+
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        Search by Name: @Html.TextBox("searchString")
+                    </div>
+                </td>
+                <td>
+                    <input type="submit" value="Search" id="submit" />
+                </td>
+            </tr>
+        </table>
+    }
+
+
+
     <div class="span9">
         <div class="content">
 
             <div class="module">
                 <div class="module-head">
-                    <h2 class="align-center">ProjectList</h2>
+                    <h3>Project List</h3>
+                    <p class="align-right"><button class="add-on"></button></p>
                 </div>
                 <div class="module-body">
 
@@ -30,9 +51,7 @@
                         <thead>
                             <tr>
 
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ProjectId)
-                                </th>
+                               
                                 <th>
                                     @Html.DisplayNameFor(model => model.Title)
                                 </th>
@@ -48,6 +67,7 @@
                                 <th>
                                     @Html.DisplayNameFor(model => model.Id)
                                 </th>
+                               
 
 
                             </tr>
@@ -56,16 +76,24 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.ProjectId)</td>
+                                   
                                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Description)</td>
                                     <td>@Html.DisplayFor(modelItem => item.OutDate)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.ImageUrl)</td>
+                                    <td>
+                                        @{
+                                            string path = "~/Content/Upload/" + @item.ImageUrl;
+                                        }
+                                        <img src="@Url.Content(path)" width="50" height="50" />
+                                    </td>
                                     <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                     <td>
-                                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                                        @Html.ActionLink("pdf", "pdf", new { /* id = Model.PrimaryKey */ })|
+                                        @Html.ActionLink("Edit", "Edit", new { id = item.ProjectId }) |
+
+
+                                        @Html.ActionLink("Details", "Details", new { id = item.ProjectId }) |
+                                        @Html.ActionLink("Delete", "Delete", new { id = item.ProjectId }) |
 
                                         <a href="/tasks/Index?Projectid=@item.ProjectId">
                                             Show tasks
@@ -79,7 +107,6 @@
                                         <a href="/tasks/BarChart?userId=@item.Id&projectId=@item.ProjectId">
                                             Show chart of tasks
                                         </a>
-
 
 
                                     </td>

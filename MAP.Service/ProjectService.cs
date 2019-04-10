@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace MAP.Service
 {
-  public  class ProjectService:Service<Project>, IProjectService
+    public class ProjectService : Service<Project>, IProjectService
     {
         static IDataBaseFactory Factory = new DataBaseFactory();//l'usine de fabrication du context
         static IUnitOfWork utk = new UnitOfWork(Factory);//unité de travail a besoin du factory pour communiquer avec la base
@@ -19,9 +19,6 @@ namespace MAP.Service
 
 
         }
-
-
-        //Recherche
         public IEnumerable<Project> SearchProjectsByName(string searchString)
         {
             IEnumerable<Project> ProjectsDomain = GetMany();
@@ -65,10 +62,5 @@ namespace MAP.Service
         {
             throw new NotImplementedException();
         }
-
-        //public void CommitAddProject()
-        //{
-        //    uow.Commit();
-        //}
     }
 }

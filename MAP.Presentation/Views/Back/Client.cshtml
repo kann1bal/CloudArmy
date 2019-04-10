@@ -10,7 +10,7 @@
     //Layout = "~/Views/Home/IndexPatient.cshtml";
 }
 
-<h2>List Of Users:</h2>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,89 +18,98 @@
     <link type="text/css" href="~/Assets/Manager/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link type="text/css" href="~/Assets/Manager/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="~/Assets/Manager/css/theme.css" rel="stylesheet">
+    <link type="text/css" href="~/Assets/Client/css/style.css" rel="stylesheet">
+
     <link type="text/css" href="~/Assets/Manager/images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
 </head>
-<div class="span9">
-    <div class="content">
-        <div class="row">
-            <table class="table table-striped table-bordered table-condensed">
+<h2>List Of Users:</h2>
 
-                <thead>
+<div class="content">
+    <div class="tbl-header">
+        <table cellpadding="0" cellspacing="0" border="0">
+
+            <thead>
+                <tr>
+
+                    <th>First Name</th>
+                    <th>Email User</th>
+                    <th>Status User</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+
+                    <th>Action</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+
+                <tbody>
                     <tr>
 
-                        <th>First Name</th>
-                        <th>Email User</th>
-                        <th>Status User</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                @foreach (var item in Model)
-                {
-
-                    <tbody>
-                        <tr>
-
-                            <td> @Html.DisplayFor(modelItem => item.UserName)</td>
-                            <td> @Html.DisplayFor(modelItem => item.Email)</td>
-                            @{if (item.status == 1)
-                                {
-                                    <td> Admin</td>
-                                }
-                                else if (item.status == 2)
-                                {
-                                    <td> Manager</td>
-                                }
-                                else if (item.status == 3)
-                                {
-                                    <td> Team Leader</td>
-                                }
-                                else if (item.status == 4)
-                                {
-                                    <td>Member</td>
-                                }
-                                else if (item.status == 0)
-                                {
-                                    <td>Non confirmé</td>
-                                }
+                        <td> @Html.DisplayFor(modelItem => item.UserName)</td>
+                        <td> @Html.DisplayFor(modelItem => item.Email)</td>
+                        @{if (item.status == 1)
+                            {
+                                <td> Admin</td>
                             }
+                            else if (item.status == 2)
+                            {
+                                <td> Manager</td>
+                            }
+                            else if (item.status == 3)
+                            {
+                                <td> Team Leader</td>
+                            }
+                            else if (item.status == 4)
+                            {
+                                <td>Member</td>
+                            }
+                            else if (item.status == 0)
+                            {
+                                <td>Non confirmé</td>
+                            }
+                        }
 
-                            <td> @Html.DisplayFor(modelItem => item.LastName)</td>
-                            <td> @Html.DisplayFor(modelItem => item.FirstName)</td>
+                        <td> @Html.DisplayFor(modelItem => item.LastName)</td>
+                        <td> @Html.DisplayFor(modelItem => item.FirstName)</td>
 
 
 
-                            <td>
-                                @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
-                                @Html.ActionLink("Details", "Details", new { Id = item.Id }) |
-                                @Html.ActionLink("Delete", "Delete", new { Id = item.Id })
-                            </td>
-                        </tr>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
+                            @Html.ActionLink("Details", "Details", new { Id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { Id = item.Id })
+                        </td>
+                    </tr>
 
-                    </tbody>
-                }
+                </tbody>
+            }
 
 
-            </table>
+        </table>
 
-        </div>
     </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+<div class="made-with-love">
+    Made with
+    <i>Cloud Army</i> by
+    <a target="_blank" href="">ESPRIT</a>
 </div>
 <script src="~/Assets/Manager/scripts/jquery-1.9.1.min.js"></script>
 <script src="~/Assets/Manager/scripts/jquery-ui-1.10.1.custom.min.js"></script>
 <script src="~/Assets/Manager/bootstrap/js/bootstrap.min.js"></script>
+<script src="~/Assets/Client/js/index.js"></script>
 <script src="~/Assets/Manager/scripts/datatables/jquery.dataTables.js"></script>
 <script>
-		$(document).ready(function() {
-			$('.datatable-1').dataTable();
-			$('.dataTables_paginate').addClass("btn-group datatable-pagination");
-			$('.dataTables_paginate > a').wrapInner('<span />');
-			$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
-			$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
-		} );
+    $(document).ready(function () {
+        $('.datatable-1').dataTable();
+        $('.dataTables_paginate').addClass("btn-group datatable-pagination");
+        $('.dataTables_paginate > a').wrapInner('<span />');
+        $('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+        $('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+    });
 </script>
-
-

@@ -116,6 +116,9 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OpenPop, Version=2.0.6.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenPop.2.0.6.2\lib\net20\OpenPop.dll</HintPath>
+    </Reference>
     <Reference Include="PayPal, Version=1.9.1.0, Culture=neutral, PublicKeyToken=5b4afc1ccaef40fb, processorArchitecture=MSIL">
       <HintPath>..\packages\PayPal.1.9.1\lib\net451\PayPal.dll</HintPath>
       <Private>True</Private>
@@ -256,6 +259,7 @@
     <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\MeetingController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
+    <Compile Include="Controllers\POPEmailController.cs" />
     <Compile Include="Controllers\ProjecttController.cs" />
     <Compile Include="Controllers\TasksController.cs" />
     <Compile Include="Controllers\TeamLeaderController.cs" />
@@ -270,6 +274,7 @@
     <Compile Include="Models\Identity\UserModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MeetingVM.cs" />
+    <Compile Include="Models\POPEmail.cs" />
     <Compile Include="Models\ProjectVM.cs" />
     <Compile Include="Models\RequestVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -427,6 +432,8 @@
     <Content Include="Assets\Back\plugins\pace\pace.min.css" />
     <Content Include="Assets\Back\plugins\timepicker\bootstrap-timepicker.min.css" />
     <Content Include="Assets\Back\plugins\timepicker\bootstrap-timepicker.min.js" />
+    <Content Include="Assets\Client\css\style.css" />
+    <Content Include="Assets\Client\js\index.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -870,10 +877,6 @@
     <Content Include="Views\Shared\LayoutManagerDetails.cshtml" />
     <Content Include="Views\Shared\LayoutManagerEdit.cshtml" />
     <Content Include="Views\Shared\Head.cshtml" />
-    <Content Include="Views\Projectt\Create.cshtml" />
-    <Content Include="Views\Projectt\Delete.cshtml" />
-    <Content Include="Views\Projectt\Edit.cshtml" />
-    <Content Include="Views\Projectt\Index.cshtml" />
     <Content Include="Views\Meeting\Create.cshtml" />
     <Content Include="Views\Meeting\Delete.cshtml" />
     <Content Include="Views\Meeting\Edit.cshtml" />
@@ -900,6 +903,16 @@
     <Content Include="Views\Meeting\IndexOthers.cshtml" />
     <Content Include="Views\Projectt\Indexothers.cshtml" />
     <Content Include="Views\Document\DocumentByProject.cshtml" />
+    <Content Include="Views\POPEmail\Index.cshtml" />
+    <Content Include="Views\Projectt\Create.cshtml" />
+    <Content Include="Views\Projectt\Delete.cshtml" />
+    <Content Include="Views\Projectt\Details.cshtml" />
+    <Content Include="Views\Projectt\Edit.cshtml" />
+    <Content Include="Views\Projectt\Index.cshtml" />
+    <Content Include="Views\Meeting\Statistic.cshtml" />
+    <Content Include="Views\TeamLeader\Home.cshtml" />
+    <Content Include="Views\Member\Home.cshtml" />
+    <Content Include="Views\Manager\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

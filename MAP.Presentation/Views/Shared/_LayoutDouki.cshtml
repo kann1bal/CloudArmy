@@ -95,7 +95,7 @@
                                             <!-- start message -->
                                             <a href="#">
                                                 <div class="pull-left">
-                                            
+
                                                     <img src="/Assets/imgch/Douki.png" class="img-circle" alt="User Image">
                                                 </div>
                                                 <h4>
@@ -169,21 +169,21 @@
                         <!-- User Account: style can be found in dropdown.less -->
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                
+
                                 <img src="~/Assets/imgch/Douki.png" class="user-image" alt="User Image">
                                 <span class="hidden-xs">
-                                <div id="test">
-                                    @Html.ActionLink( User.Identity.GetUserName() , "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-                                </div>
+                                    <div id="test">
+                                        @Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                                    </div>
                                 </span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header">
-                                   
+
                                     <img src="~/Assets/imgch/Douki.png" class="img-circle" alt="User Image">
                                     <p>
-                                        Alexander Pierce - Web Developer
+                                        Moez Baklouti
                                         <small>Member since Nov. 2012</small>
                                     </p>
                                 </li>
@@ -207,16 +207,19 @@
                                     <div class="pull-left">
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
-                                    <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                                    </div>
+                                <li>
+                                    <a href="@Url.Action("LogOff", "Account")"></a>
                                 </li>
-                            </ul>
+                                <ul>
+                                    <li>@Html.Partial("_LoginPartial") </li>
+                                </ul>
                         </li>
-                        <!-- Control Sidebar Toggle Button -->
-                        <li>
-                            <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                        </li>
+                    </ul>
+                    </li>
+                    <!-- Control Sidebar Toggle Button -->
+                    <li>
+                        <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+                    </li>
                     </ul>
                 </div>
             </nav>
@@ -229,7 +232,7 @@
                 <!-- Sidebar user panel -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        
+
                         <img src="~/Assets/imgch/Douki.png" class="img-circle" alt="User Image">
                     </div>
                     <div class="pull-left info">
@@ -310,10 +313,9 @@
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
-
             <!-- Main content -->
             <section class="content">
-             @RenderBody()
+                @RenderBody()
             </section>
             <!-- /.content -->
         </div>
@@ -512,26 +514,26 @@
     <!-- AdminLTE for demo purposes -->
     <script src="~/Assets/Back/dist/js/demo.js"></script>
     <script>
-  $(document).ready(function () {
-    $('.sidebar-menu').tree()
-  })
+        $(document).ready(function () {
+            $('.sidebar-menu').tree()
+        })
     </script>
     <script>
-		initSample();
+        initSample();
     </script>
     <script>
-$(document).ready(function(){
-    $("#firas").hide();
+        $(document).ready(function () {
+            $("#firas").hide();
 
-    $("#said1").click(function () {
-        $("#firas").hide();
-        $("#right").show();
-    });
-    $("#said2").click(function(){
-        $("#firas").show();
-        $("#right").hide();
-    });
-});
+            $("#said1").click(function () {
+                $("#firas").hide();
+                $("#right").show();
+            });
+            $("#said2").click(function () {
+                $("#firas").show();
+                $("#right").hide();
+            });
+        });
     </script>
     <!--Script references. -->
     <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
@@ -567,7 +569,7 @@ $(document).ready(function(){
                         + ' <div class="chat-text"> ' + htmlEncode(message) + '</div></li>');
 
                 }
-                else  {
+                else {
                     // Add the message to the page.
                     $('#discussion').append('<li class="chat-right">'
                         + ' <div class="chat-text"> ' + htmlEncode(message) + '</div><div class="chat-avatar"><div class="chat-name">You</div></div></li>');
@@ -596,21 +598,21 @@ $(document).ready(function(){
         }
         alert("Bonjour cher Responsable");
 
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
     </script>
 
 
-  
+
 
 </body>
 <!-- Mirrored from adminlte.io/themes/AdminLTE/pages/examples/blank.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 28 Oct 2018 23:17:13 GMT -->

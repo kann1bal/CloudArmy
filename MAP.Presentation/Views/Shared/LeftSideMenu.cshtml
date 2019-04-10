@@ -46,6 +46,7 @@
 
                 </ul>
             </li>
+            <li><a href=@Url.Action("Index","POPEmail")><i class="fa fa-book"></i> <span>Email</span></a></li>
 
             <li class="treeview">
 
@@ -55,21 +56,12 @@
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li>
-                        <a href=@Url.Action("Index","Resource")>
-                            <i class="fa fa-circle-o">
-                            </i> Resources
-                        </a>
-                    </li>
-                    <li><a href="@Url.Action("ProjectAffectation","Resource")"><i class="fa fa-circle-o"></i> Assignations Projects</a></li>
-
-                </ul>
+            <li>
+                <a href="@Url.Action("LogOff", "Account")"></a>
             </li>
-            <li><a href=@Url.Action("Index","Skills")><i class="fa fa-book"></i> <span>Skills Management</span></a></li>
-
-
-
+            <ul>
+                <li>@Html.Partial("_LoginPartial") </li>
+            </ul>
 
 
 
