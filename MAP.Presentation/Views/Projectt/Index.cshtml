@@ -17,6 +17,30 @@
 
     </p>
 
+    <p>
+        @Html.ActionLink("pdf", "pdf", new { /* id = Model.PrimaryKey */ })
+
+
+    </p>
+
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>
+                    <div>
+                        Search by Name: @Html.TextBox("searchString")
+                    </div>
+                </td>
+                <td>
+                    <input type="submit" value="Search" id="submit" />
+                </td>
+            </tr>
+        </table>
+    }
+
+
+
     <div class="span9">
         <div class="content">
 
@@ -31,9 +55,7 @@
                         <thead>
                             <tr>
 
-                                <th>
-                                    @Html.DisplayNameFor(model => model.ProjectId)
-                                </th>
+                               
                                 <th>
                                     @Html.DisplayNameFor(model => model.Title)
                                 </th>
@@ -57,7 +79,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
-                                    <td>@Html.DisplayFor(modelItem => item.ProjectId)</td>
+                                   
                                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
                                     <td>@Html.DisplayFor(modelItem => item.Description)</td>
                                     <td>@Html.DisplayFor(modelItem => item.OutDate)</td>
