@@ -15,6 +15,7 @@ namespace MAP.Presentation.Controllers
         // GET: POPEmail
 
         // GET: POPEmail
+        [Authorize]
         public ActionResult Index()
         {
             OpenPop.Pop3.Pop3Client pop3Client = new OpenPop.Pop3.Pop3Client();

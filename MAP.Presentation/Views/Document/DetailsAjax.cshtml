@@ -12,17 +12,29 @@
     <h4 style=" text-align:center;border-bottom:1px solid #808080">DocumentInfo</h4>
     @foreach (var item in Model)
     {
-    <p>
-        <label>Name : </label> @Html.DisplayFor(modelItem => item.Name)
-    </p>
-    <p>
-        <label>Email : </label>@Html.DisplayFor(modelItem => item.Size)
-    </p>
-    <p>
-        <label>Phone : </label> @Html.DisplayFor(modelItem => item.Name)
-    </p>
-    <p>
-        <label>Experience : </label> @Html.DisplayFor(modelItem => item.Size)
-    </p>
-        }
+        <p>
+            <label>Name : </label> @Html.DisplayFor(modelItem => item.Name)
+        </p>
+        <p>
+            <label>Description : </label>@Html.DisplayFor(modelItem => item.Size)
+        </p>
+        <p>
+            <label>Type : </label> @Html.DisplayFor(modelItem => item.TypeVm)
+        </p>
+       
+        <p>
+            @if (item.Extension == ".pdf")
+            {
+                <img src="~/Content/Upload/pdf.png" width="50" height="50" />
+            }
+            else if (item.Extension == ".docx")
+            {
+                <img src="~/Content/Upload/docx.png" width="50" height="50" />
+            }
+            else
+            {
+                <img src="@Url.Content("~/Content/Upload/" + item.ImageUrl)" width="50" height="50" />
+            }
+        </p>
+    }
 </div>

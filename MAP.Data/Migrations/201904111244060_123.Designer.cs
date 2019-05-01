@@ -7,13 +7,13 @@ namespace MAP.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class LOCAL : IMigrationMetadata
+    public sealed partial class _123 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(LOCAL));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_123));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904101302453_LOCAL"; }
+            get { return "201904111244060_123"; }
         }
         
         string IMigrationMetadata.Source

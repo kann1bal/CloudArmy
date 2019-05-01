@@ -32,6 +32,7 @@ namespace MAP.Presentation.Controllers
         }
 
         // GET: Meeting
+        [Authorize]
         public ActionResult Index(string searchString)
         {
             var Meetings = new List<MeetingVM>();
@@ -57,7 +58,7 @@ namespace MAP.Presentation.Controllers
             return View(Meetings);
             
         }
-
+        [Authorize]
         public ActionResult IndexOthers(string searchString)
         {
             var Meetings = new List<MeetingVM>();
@@ -93,6 +94,7 @@ namespace MAP.Presentation.Controllers
 
 
         // GET: Meeting/Create
+        [Authorize]
         public ActionResult Create()
         {
 
@@ -147,6 +149,7 @@ namespace MAP.Presentation.Controllers
 
         // GET: Meeting/Delete/id
         [HttpGet]
+        [Authorize]
         public ActionResult Delete(int Id)
         {
             Meeting M = MyMeetingService.GetMeetingById(Id);
@@ -194,6 +197,7 @@ namespace MAP.Presentation.Controllers
 
         [HttpGet]
         // GET: Meeting/Edit/id
+        [Authorize]
         public ActionResult Edit(int id)
         {
             var MyProjects = MyProjectService.GetMany();
@@ -247,7 +251,7 @@ namespace MAP.Presentation.Controllers
                 return View(MVM);
             }
         }
-
+        [Authorize]
         public ActionResult IndexCalendar()
         {
             if (AccountController.CurrentUserStatus == 2)
@@ -263,6 +267,7 @@ namespace MAP.Presentation.Controllers
             ViewBag.CurrentUserStatus = x;
             return View();
         }
+        [Authorize]
         public ActionResult Statistic()
         {
 

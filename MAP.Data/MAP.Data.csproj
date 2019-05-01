@@ -116,9 +116,9 @@
     <Compile Include="Infrastructures\IUnitOfWork.cs" />
     <Compile Include="Infrastructures\RepositoryBase.cs" />
     <Compile Include="Infrastructures\UnitOfWork.cs" />
-    <Compile Include="Migrations\201904101302453_LOCAL.cs" />
-    <Compile Include="Migrations\201904101302453_LOCAL.Designer.cs">
-      <DependentUpon>201904101302453_LOCAL.cs</DependentUpon>
+    <Compile Include="Migrations\201904111244060_123.cs" />
+    <Compile Include="Migrations\201904111244060_123.Designer.cs">
+      <DependentUpon>201904111244060_123.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ProjectContext.cs" />
@@ -139,8 +139,8 @@
     <Content Include="Scripts\respond.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904101302453_LOCAL.resx">
-      <DependentUpon>201904101302453_LOCAL.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904111244060_123.resx">
+      <DependentUpon>201904111244060_123.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

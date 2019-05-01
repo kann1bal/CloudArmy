@@ -143,7 +143,7 @@ namespace MAP.Service.Services
             else if (t.complexity == Complexity.hard)
             {
                    
-                    if ((t.deadline - now).TotalDays <= 2) // 2 days
+                    if ((t.deadline - now).TotalDays >= 2) // 2 days
                     {
                         rate = 5;
                     }

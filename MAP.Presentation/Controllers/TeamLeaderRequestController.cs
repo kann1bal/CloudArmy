@@ -27,9 +27,9 @@ namespace MAP.Presentation.Controllers
             MyProjectService = new ProjectService();
             MyDedicatedService = new UserService();
         }
-      
-        
 
+
+        [Authorize]
         public ActionResult Table(string searchString)
         {
             var Requests = new List<RequestVM>();
@@ -68,6 +68,7 @@ namespace MAP.Presentation.Controllers
 
 
         // GET: TeamLeader/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             Request R = MyRequestService.GetRequestById(id);
@@ -103,6 +104,7 @@ namespace MAP.Presentation.Controllers
         }
 
         // GET: TeamLeader/Create
+        [Authorize]
         public ActionResult Create()
         {
             
@@ -159,6 +161,7 @@ namespace MAP.Presentation.Controllers
 
 
         // GET: TeamLeader/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             if (AccountController.CurrentUserStatus == 2)
@@ -180,6 +183,7 @@ namespace MAP.Presentation.Controllers
             
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async System.Threading.Tasks.Task<ActionResult> Edit(int id, RequestVM RVM)
         {
             try

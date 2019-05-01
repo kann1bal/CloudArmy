@@ -35,6 +35,7 @@ namespace MAP.Presentation.Controllers
             MyeditProjectService= new ProjectService();
         }
         // GET: Documentt
+        [Authorize]
         public ActionResult Index(string searchString)
         {
 
@@ -93,7 +94,7 @@ namespace MAP.Presentation.Controllers
             return View(List);
         }
 
-
+        [Authorize]
         public ActionResult IndexOthers(string searchString)
         {
 
@@ -161,7 +162,7 @@ namespace MAP.Presentation.Controllers
 
             return View(documents);
         }
-
+        [Authorize]
         // GET: Documentt/Details/5
         public ActionResult Details(int id)
         {
@@ -202,6 +203,7 @@ namespace MAP.Presentation.Controllers
 
 
         // GET: Documentt/Create
+        [Authorize]
         public ActionResult Create()
         {
 
@@ -258,6 +260,7 @@ namespace MAP.Presentation.Controllers
         }
 
         // GET: Documentt/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             System.Diagnostics.Debug.WriteLine("********* this is mee ");
@@ -395,7 +398,10 @@ namespace MAP.Presentation.Controllers
                 
                 Docvm.Name = p.Name;
                 Docvm.Size = p.Size;
-                lists.Add(Docvm);
+                Docvm.TypeVm =(TypeVm) p.FileType;
+                Docvm.ImageUrl = p.ImageUrl;
+                Docvm.Extension = Path.GetExtension(p.ImageUrl);
+            lists.Add(Docvm);
                 
             
             return View(lists);

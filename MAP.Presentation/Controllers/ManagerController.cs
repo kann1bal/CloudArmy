@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace MAP.Presentation.Controllers
 {
+    [Authorize]
     public class ManagerController : Controller
     {
         public string x ;
@@ -25,6 +26,7 @@ namespace MAP.Presentation.Controllers
             ViewBag.CurrentUserStatus = x;
             return View();
         }
+        [Authorize]
         public ActionResult Home()
         {
             if (AccountController.CurrentUserStatus == 2)

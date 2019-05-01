@@ -10,6 +10,7 @@ namespace MAP.Presentation.Controllers
     {
         public string x;
         // GET: Member
+        [Authorize]
         public ActionResult Index()
         {
             if (AccountController.CurrentUserStatus == 2)
@@ -26,6 +27,7 @@ namespace MAP.Presentation.Controllers
             return View();
 
         }
+        [Authorize]
         public ActionResult Home()
         {
             if (AccountController.CurrentUserStatus == 2)

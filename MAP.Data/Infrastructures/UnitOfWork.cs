@@ -25,5 +25,7 @@ namespace MAPData.Infrastructure
         {
             return new RepositoryBase<T>(dbFactory);
         }
+
+      
     }
 }

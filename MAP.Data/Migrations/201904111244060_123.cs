@@ -3,7 +3,7 @@ namespace MAP.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class LOCAL : DbMigration
+    public partial class _123 : DbMigration
     {
         public override void Up()
         {

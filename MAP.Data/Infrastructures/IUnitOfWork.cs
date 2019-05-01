@@ -11,5 +11,7 @@ namespace MAP.Data.Infrastructure
         void Commit();
         void Dispose();
         IRepositoryBase<T> getRepository<T>() where T: class;
+        
+
     }
 }

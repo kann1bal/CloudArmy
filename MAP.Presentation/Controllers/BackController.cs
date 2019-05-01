@@ -22,19 +22,21 @@ namespace MAP.Presentation.Controllers
             MyUserService = new UserService();
         }
         // GET: Back
+        [Authorize (Roles="Admin")]
         public ActionResult Index()
         {
             return View();
 
         }
 
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int Id)
         {
             return View(us.GetById(Id));
 
         }
 
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int Id)
         {
 
@@ -86,7 +88,7 @@ namespace MAP.Presentation.Controllers
             }
             return View();
         }
-
+        [Authorize(Roles = "Admin")]
         public ActionResult Projet()
         {
             return View();

@@ -73,7 +73,11 @@ namespace MAP.Data.Infrastructure
             dbset.Attach(entity);
             dataContext.Entry(entity).State = EntityState.Modified;
         }
+        public IEnumerable<T> GetAll()
+        {
+            return dbset.ToList();
+        }
 
-      
+
     }
 }

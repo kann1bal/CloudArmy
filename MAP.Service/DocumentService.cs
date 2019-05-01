@@ -41,6 +41,15 @@ namespace MAP.Service
             return ListDocuments;
         }
 
+        public List<Documentt> getDocuments()
+        {
+            IEnumerable<Documentt> m = (from Documentt in utk.getRepository<Documentt>().GetAll()
+                                   select Documentt);
+            List<Documentt> list = m.ToList<Documentt>();
+            return list;
+        }
+
+
 
     }
 }

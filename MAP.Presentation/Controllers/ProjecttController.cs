@@ -31,6 +31,7 @@ namespace MAP.Presentation.Controllers
 
         // GET: Project
         //affichage
+        [Authorize]
         public ActionResult Index(string searchString)
         {
             var Projects = new List<ProjectVM>();
@@ -61,7 +62,7 @@ namespace MAP.Presentation.Controllers
             ViewBag.CurrentUserStatus = x;
             return View(Projects);
         }
-
+        [Authorize]
         public ActionResult Indexothers(string searchString)
         {
             var  Projects = new List<ProjectVM>();
@@ -122,6 +123,7 @@ namespace MAP.Presentation.Controllers
 
         // GET: Project/Create
         [HttpGet]
+        [Authorize]
         public ActionResult Create()
         {
             var MyUsers = MyUserService.GetMany();
@@ -178,7 +180,10 @@ namespace MAP.Presentation.Controllers
             
         }
         [HttpGet]
+
+
         // GET: Project/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
             Project p = MyProjectService.GetProjectById(id);
@@ -234,14 +239,16 @@ namespace MAP.Presentation.Controllers
 
         [HttpGet]
         // GET: Project/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
             Project p = MyProjectService.GetProjectById(id);
             //}
             ProjectVM VM = new ProjectVM();
+            VM.ProjectId = p.ProjectId;
             VM.Title = p.Title;
             VM.Description = p.Description;
-            // VM.Branche = (BrancheVM)p.Branche;
+            VM.Branche = (BrancheVM)p.Branche;
             VM.ImageUrl = p.ImageUrl;
             VM.OutDate = p.OutDate;
             VM.Id = p.Id;

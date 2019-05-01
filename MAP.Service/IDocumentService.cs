@@ -10,6 +10,7 @@ namespace MAP.Service
 {
     public interface IDocumentService : IService<Documentt>
     {
+        List<Documentt> getDocuments();
         IEnumerable<Documentt> SearchDocumentByName(string searchString);
         List<Documentt> GetDocumentbyIdProject(int ProjectId);
     }

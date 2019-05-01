@@ -18,6 +18,6 @@ namespace MAP.Data.Infrastructure
         T Get(Expression<Func<T, bool>> condition);
         IEnumerable<T> GetMany(Expression<Func<T, bool>> 
             condition = null, Expression<Func<T, bool>> orderBy= null);
-
+        IEnumerable<T> GetAll();
     }
 }

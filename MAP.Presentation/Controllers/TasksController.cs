@@ -22,6 +22,7 @@ namespace MAP.Presentation.Controllers
         public UserService us = new UserService();
         public static int? ProjectId;
         // GET: Tasks
+        [Authorize]
         public ActionResult Index(int ProjectId)
         {
             ViewBag.id = ProjectId;
@@ -41,6 +42,7 @@ namespace MAP.Presentation.Controllers
         }
 
         // GET: Tasks/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
             Tasks t = ts.GetById(id);
